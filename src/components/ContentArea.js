@@ -1,4 +1,8 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+
+import ChartData from "./ChartData";
+import Dashboard from "./Dashboard";
 
 class ContentArea extends React.Component {
   render() {
@@ -10,7 +14,8 @@ class ContentArea extends React.Component {
           <li className="nav-item p-4">Hello, USER</li>
         </ul>
         <div className="container m-5">
-          <h3>ALL APP CONTENT GOES HERE!!</h3>
+          <Route path="/dashboard" exact={true} component={Dashboard} />
+          <Route path="/make-your-chart" component={ChartData} />
         </div>
       </div>
     );
