@@ -12,6 +12,9 @@ class Sidebar extends React.Component {
               <Link to="/dashboard" className="nav-link text-light pb-4">
                 DASHBOARD
               </Link>
+              <Link to="/uploadCsv" className="nav-link text-light pb-4">
+                Create Chart
+              </Link>
               <Link to="/make-your-chart" className="nav-link text-light">
                 LINE CHART
               </Link>
