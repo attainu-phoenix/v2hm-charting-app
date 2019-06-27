@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 import ChartData from "./ChartData";
 import Dashboard from "./Dashboard";
-import CsvComponent from './UploadCsv.js';
+import CSVFileUploader from "./CsvFileUploader.js";
+
 
 class ContentArea extends React.Component {
   render() {
@@ -17,7 +18,7 @@ class ContentArea extends React.Component {
         <div className="container m-5">
           <Route path="/dashboard" exact={true} component={Dashboard} />
           <Route path="/make-your-chart" component={ChartData} />
-          <Route path="/uploadCsv" component={CsvComponent} />
+          <Route path="/uploadCsv" component= {CSVFileUploader} />
         </div>
       </div>
     );
