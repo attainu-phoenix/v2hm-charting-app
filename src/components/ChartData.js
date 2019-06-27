@@ -1,6 +1,7 @@
 import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
+import DataTable from "./DataTable";
 
 class ChartData extends React.Component {
   constructor(props) {
@@ -64,62 +65,14 @@ class ChartData extends React.Component {
       <div className="row">
         <div className="col-md-6">
           <h4 className="mb-5">Make your chart</h4>
-          <div className="data-table my-4">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">A</th>
-                  <th scope="col">B</th>
-                  <th scope="col">C</th>
-                  <th scope="col">D</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td />
-                  <td>Brand Export %</td>
-                  <td />
-                  <td />
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Coca Cola</td>
-                  <td>35</td>
-                  <td />
-                  <td />
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Red Bull</td>
-                  <td>15</td>
-                  <td />
-                  <td />
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Pepsi</td>
-                  <td>25</td>
-                  <td />
-                  <td />
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Kingfisher</td>
-                  <td>15</td>
-                  <td />
-                  <td />
-                </tr>
-                <tr>
-                  <th scope="row">6</th>
-                  <td>Carlsberg</td>
-                  <td>10</td>
-                  <td />
-                  <td />
-                </tr>
-              </tbody>
-            </table>
+          <div>
+            <DataTable />
+          </div>
+          <div className="mt-4">
+            <div className="btn btn-warning mr-4">Line Chart</div>
+            <div className="btn btn-warning mx-4">Pie Chart</div>
+            <div className="btn btn-warning mx-4">Bar Chart</div>
+            <div className="btn btn-warning ml-4">Area Chart</div>
           </div>
         </div>
         <div className="col-md-6">
