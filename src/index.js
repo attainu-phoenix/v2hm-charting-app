@@ -8,8 +8,8 @@ import App from "./components/app.js";
 class Home extends React.Component {
   render() {
     return (
-      <Router>
-        <Route path="/" exact={true} component={Landing} />
+      <Router> 
+        <Route path="/" exact={true} component={Landing} /> 
         <Route path="/app" component={App} />
       </Router>
     );
