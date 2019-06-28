@@ -24,7 +24,7 @@ class CSVFileUploader extends React.Component {
 
     render() {
         return(
-            <input 
+            <input className = "text-success"
                 type="file" 
                 onChange={ this.fileChanged }
                 accept=".csv" 

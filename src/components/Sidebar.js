@@ -9,23 +9,23 @@ class Sidebar extends React.Component {
           <h4 className="text-light">CHARTOWL</h4>
           <div className="menu pt-5">
             <nav className="nav flex-column">
-              <Link to="/dashboard" className="nav-link text-light pb-4">
+              <Link to="/app/dashboard" className="nav-link text-light pb-4">
                 DASHBOARD
               </Link>
-              <Link to="/uploadCsv" className="nav-link text-light pb-4">
+              <Link to="/app/uploadCsv" className="nav-link text-light pb-4">
                 Create Chart
               </Link>
-              <Link to="/make-your-chart" className="nav-link text-light">
+              <Link to="/app/make-your-chart" className="nav-link text-light">
                 LINE CHART
               </Link>
-              <Link to="/make-your-chart" className="nav-link text-light">
+              <Link to="/app/make-your-chart" className="nav-link text-light">
                 AREA CHART
               </Link>
-              <Link to="/make-your-chart" className="nav-link text-light">
+              <Link to="/app/make-your-chart" className="nav-link text-light">
                 BAR CHART
               </Link>
               <Link
-                to="/make-your-chart"
+                to="/app/make-your-chart"
                 className="nav-link text-light pb-5 mb-5"
               >
                 PIE CHART
