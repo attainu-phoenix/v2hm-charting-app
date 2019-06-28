@@ -11,7 +11,10 @@ class Sidebar extends React.Component {
             <nav className="nav flex-column">
               <Link to="/app/dashboard" className="nav-link text-light pb-4">
                 DASHBOARD
-              </Link>
+              </Link> 
+              <Link to="/app/uploadCsv" className="nav-link text-light pb-4">
+                Create Chart
+              </Link> 
               <Link to="/app/make-your-chart" className="nav-link text-light">
                 LINE CHART
               </Link>
