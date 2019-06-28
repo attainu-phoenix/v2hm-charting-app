@@ -15,7 +15,7 @@ class ContentArea extends React.Component {
           <li className="nav-item p-4">Profile</li>
           <li className="nav-item p-4">Hello, USER</li>
         </ul>
-        <div className="container m-5">
+        <div className="container m-5"> 
           <Route path="/app/dashboard"  component={Dashboard} />
           <Route path="/app/make-your-chart" component={ChartData} />
           <Route path="/app/uploadCsv" component= {CSVFileUploader} />
