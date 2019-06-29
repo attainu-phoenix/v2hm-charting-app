@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import ChartData from "./ChartData";
 import Dashboard from "./Dashboard";
 import CSVFileUploader from "./CsvFileUploader.js";
-
+import Logout from "./logout.js";
 
 class ContentArea extends React.Component {
   render() {
@@ -19,6 +19,7 @@ class ContentArea extends React.Component {
           <Route path="/app/dashboard"  component={Dashboard} />
           <Route path="/app/make-your-chart" component={ChartData} />
           <Route path="/app/uploadCsv" component= {CSVFileUploader} />
+          <Route path="/app/logout" component= {Logout} />
         </div>
       </div>
     );
