@@ -38,16 +38,13 @@ class Sidebar extends React.Component {
               <Link to="/app/barchart" className="nav-link text-light">
                 BAR CHART
               </Link>
-              <Link
-                to="/app/piechart"
-                className="nav-link text-light pb-5 mb-5"
-              >
+              <Link to="/app/piechart" className="nav-link text-light pb-5 mb-5">
                 PIE CHART
               </Link>
 
-              <a className="nav-link text-light pt-5 mt-5" href="#">
+              <Link to="/app/profile" className="nav-link text-light pt-5 mt-5">
                 PROFILE
-              </a>
+              </Link>
               <a className="nav-link text-light pb-5 mb-5" href="#">
                 LOGOUT
               </a>

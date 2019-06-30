@@ -11,6 +11,7 @@ import BarChart from './BarChart.js';
 import PieChart from './PieChart.js';
 import CreateChart from "./CreateChart.js";
 import DataType from "./DataType.js";
+import Profile from "./Profile.js";
 
 class ContentArea extends React.Component {
   render() {
@@ -35,6 +36,7 @@ class ContentArea extends React.Component {
           <Route path="/app/barchart" component={BarChart} />
           <Route path="/app/piechart" component={PieChart} />
 
+          <Route path="/app/profile" component={Profile} />
 
         </div>
       </div>
