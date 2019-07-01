@@ -16,10 +16,7 @@ class Sidebar extends React.Component {
                 CREATE +
               </Link>
 
-              <Link to="/app/datatype" className="nav-link text-light pb-4">
-                DATA TYPE
-              </Link>
- 
+
               <Link to="/app/uploadCsv" className="nav-link text-light pb-4">
                 UPLOAD FILE
               </Link> 

@@ -10,7 +10,7 @@ import AreaChart from './AreaChart.js';
 import BarChart from './BarChart.js';
 import PieChart from './PieChart.js';
 import CreateChart from "./CreateChart.js";
-import DataType from "./DataType.js";
+// import DataType from "./DataType.js";
 import Profile from "./Profile.js";
 
 class ContentArea extends React.Component {
@@ -25,7 +25,7 @@ class ContentArea extends React.Component {
         <div className="container m-5"> 
           <Route path="/app/dashboard"  component={Dashboard} />
           <Route path="/app/createchart"  component={CreateChart} />
-          <Route path="/app/datatype"  component={DataType} />
+          {/* <Route path="/app/datatype"  component={DataType} /> */}
 
 
           <Route path="/app/make-your-chart" component={ChartData} />
