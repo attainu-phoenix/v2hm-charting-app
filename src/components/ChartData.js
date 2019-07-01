@@ -68,11 +68,11 @@ class ChartData extends React.Component {
           <div>
             <DataTable />
           </div>
-          <div className="mt-4">
-            <div className="btn btn-warning mr-4">Line Chart</div>
-            <div className="btn btn-warning mx-4">Pie Chart</div>
-            <div className="btn btn-warning mx-4">Bar Chart</div>
-            <div className="btn btn-warning ml-4">Area Chart</div>
+          <div className="my-4 text-center">
+            <div className="btn btn-warning mr-3">Line Chart</div>
+            <div className="btn btn-warning mx-3">Pie Chart</div>
+            <div className="btn btn-warning mx-3">Bar Chart</div>
+            <div className="btn btn-warning ml-3">Area Chart</div>
           </div>
         </div>
         <div className="col-md-6">

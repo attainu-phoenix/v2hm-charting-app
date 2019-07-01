@@ -16,23 +16,31 @@ const columns = [
   { key: "e", name: "E", editable: true }
 ].map(c => ({ ...c, ...defaultColumnProperties }));
 
-const rows = [
-  { a: "Brands", b: "Export Sales %" },
-  { a: "Coca Cola", b: 35 },
-  { a: "Red Bull", b: 15 },
-  { a: "Pepsi", b: 25 },
-  { a: "Kingfisher", b: 15 },
-  { a: "Carlsberg", b: 10 },
-  { a: "", b: "" },
-  { a: "", b: "" },
-  { a: "", b: "" },
-  { a: "", b: "" },
-  { a: "", b: "" },
-  { a: "", b: "" }
-];
-
 class DataTable extends React.Component {
-  state = { rows };
+  constructor(props) {
+    super(props);
+
+    let rows = [
+      { a: "Brands", b: "Export Sales %" },
+      { a: "Coca Cola", b: 35 },
+      { a: "Red Bull", b: 15 },
+      { a: "Pepsi", b: 25 },
+      { a: "Kingfisher", b: 15 },
+      { a: "Carlsberg", b: 10 },
+      { a: "", b: "" },
+      { a: "", b: "" },
+      { a: "", b: "" },
+      { a: "", b: "" },
+      { a: "", b: "" },
+      { a: "", b: "" }
+    ];
+    for (let i = 1; i < 1000; i++) {
+      rows.push({});
+    }
+    this.state = { rows, selectedIndexes: [] };
+  }
+
+  // state = { rows };
 
   onGridRowsUpdated = ({ fromRow, toRow, updated }) => {
     this.setState(state => {
@@ -44,6 +52,27 @@ class DataTable extends React.Component {
     });
   };
 
+  rowGetter = i => {
+    return this.state.rows[i];
+  };
+
+  onRowsSelected = rows => {
+    this.setState({
+      selectedIndexes: this.state.selectedIndexes.concat(
+        rows.map(r => r.rowIdx)
+      )
+    });
+  };
+
+  onRowsDeselected = rows => {
+    let rowIndexes = rows.map(r => r.rowIdx);
+    this.setState({
+      selectedIndexes: this.state.selectedIndexes.filter(
+        i => rowIndexes.indexOf(i) === -1
+      )
+    });
+  };
+
   render() {
     return (
       <ReactDataGrid
@@ -52,6 +81,15 @@ class DataTable extends React.Component {
         rowsCount={13}
         onGridRowsUpdated={this.onGridRowsUpdated}
         enableCellSelect={true}
+        rowSelection={{
+          showCheckbox: true,
+          enableShiftSelect: true,
+          onRowsSelected: this.onRowsSelected,
+          onRowsDeselected: this.onRowsDeselected,
+          selectBy: {
+            indexes: this.state.selectedIndexes
+          }
+        }}
       />
     );
   }
