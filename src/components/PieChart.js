@@ -2,60 +2,13 @@ import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
+import PieChartWrapper from "./PieChartWrapper.js";
+
 class PieChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: "pie"
-          },
-          title: {
-            text: "Export sales January, 2019"
-          },
-          tooltip: {
-            pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>"
-          },
-          plotOptions: {
-            pie: {
-              allowPointSelect: true,
-              cursor: "pointer",
-              dataLabels: {
-                enabled: false
-              },
-              showInLegend: true
-            }
-          },
-          series: [
-            {
-              name: "Brands",
-              colorByPoint: true,
-              data: [
-                {
-                  name: "Coca Cola",
-                  y: 35
-                },
-                {
-                  name: "Red Bull",
-                  y: 15
-                },
-                {
-                  name: "Pepsi",
-                  y: 25
-                },
-                {
-                  name: "Kingfisher",
-                  y: 15
-                },
-                {
-                  name: "Carlsberg",
-                  y: 10
-                }
-              ]
-            }
-          ]
+
     }
   }
   
@@ -74,7 +27,7 @@ class PieChart extends React.Component {
 
             <div className="col-md-6 offset-md-2">
             <div className="my-4">
-                <HighchartsReact highcharts={Highcharts} options={this.state} />
+            <PieChartWrapper chartData={this.props.series} />
             </div>
 
 
