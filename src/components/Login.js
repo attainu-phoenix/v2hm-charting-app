@@ -3,12 +3,6 @@ import ReactDOM from "react-dom";
 import {GoogleLogin} from "react-google-login";
 
 class Login extends React.Component {
-  render() {
-    return (
-      <div>
-        <button className="btn btn-success">Login</button>
-      </div>
-    );
   constructor(props){
     super(props);
 
