@@ -1,9 +1,8 @@
 import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import Data from "./TableData/Data";
 
-class ChartData extends React.Component {
+class PieChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,26 +62,24 @@ class ChartData extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="col-md-6">
-          <h4 className="mb-5">Make your chart</h4>
-
-          <Data />
-
-          <div className="my-4 text-center">
-            <div className="btn btn-warning mr-3">Line Chart</div>
-            <div className="btn btn-warning mx-3">Pie Chart</div>
-            <div className="btn btn-warning mx-3">Bar Chart</div>
-            <div className="btn btn-warning ml-3">Area Chart</div>
-          </div>
-        </div>
-        <div className="col-md-6">
+        <div className="col-md-6 offset-md-2">
           <div>
             <button className="btn btn-primary ml-5 mr-3">New Chart</button>
             <button className="btn btn-primary mx-3">Save Chart</button>
             <button className="btn btn-primary ml-3">Reset Fields</button>
           </div>
+        </div>
+
+        <div className="col-md-6 offset-md-2">
           <div className="my-4">
             <HighchartsReact highcharts={Highcharts} options={this.state} />
+          </div>
+
+          <div className="mt-4">
+            <div className="btn btn-warning mr-4">Line Chart</div>
+            <div className="btn btn-warning mx-4">Pie Chart</div>
+            <div className="btn btn-warning mx-4">Bar Chart</div>
+            <div className="btn btn-warning ml-4">Area Chart</div>
           </div>
         </div>
       </div>
@@ -90,4 +87,4 @@ class ChartData extends React.Component {
   }
 }
 
-export default ChartData;
+export default PieChart;
