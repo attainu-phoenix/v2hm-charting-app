@@ -20,12 +20,24 @@ class CSVFileUploader extends React.Component {
 
   render() {
     return (
-      <input
-        className="text-success"
-        type="file"
-        onChange={this.fileChanged}
-        accept=".csv"
-      />
+      <div className="custom-file upload">
+        <input
+          type="file"
+          className="custom-file-input"
+          id="inputGroupFile01"
+          aria-describedby="inputGroupFileAddon01"
+          onChange={this.fileChanged}
+          accept=".csv"
+        />
+        <label className="custom-file-label" htmlFor="inputGroupFile01">
+          Choose file
+        </label>
+      </div>
+      // <input className = "text-success"
+      //     type="file"
+      //     onChange={ this.fileChanged }
+      //     accept=".csv"
+      // />
     );
   }
 }

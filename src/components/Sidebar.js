@@ -49,9 +49,9 @@ class Sidebar extends React.Component {
               <Link to="/app/profile" className="nav-link text-light pt-5 mt-5">
                 PROFILE
               </Link>
-              <a className="nav-link text-light pb-5 mb-5" href="#">
+              <Link to="/app/logout"  className="nav-link text-light pb-5 mb-5">
                 LOGOUT
-              </a>
+              </Link>
               <br />
             </nav>
           </div>
