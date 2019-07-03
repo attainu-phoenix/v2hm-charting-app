@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import Login from "./components/Login.js";
 
 import Landing from "./components/Landing.js";
 import App from "./components/app.js";
@@ -21,6 +22,7 @@ class Home extends React.Component {
     return (
       <Router> 
         <Route path="/" exact={true} component={Landing} /> 
+        <Route path = "/login" component = {Login} />
         <Route path="/app" component={App} />
         {this.doRedirect()}
 

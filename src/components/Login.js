@@ -3,14 +3,6 @@ import ReactDOM from "react-dom";
 import {GoogleLogin} from "react-google-login";
 
 class Login extends React.Component {
-<<<<<<< HEAD
-  render() {
-    return (
-      <div>
-        <button className="btn btn-success">Login</button>
-      </div>
-    );
-=======
   constructor(props){
     super(props);
 
@@ -28,7 +20,7 @@ googleCallback(response){
     }
     localStorage.setItem("user", JSON.stringify(user));
 
-    window.location.href = "/";         
+    window.location.href = "/app";         
 
     
 }
@@ -37,8 +29,9 @@ render(){
     return(
         <div className="container-fluid">
             <div className="row">
-                <div className="col-md-4 offset-md-4">
-                   
+                <div className="col-md-4 offset-md-4 login">
+                   <form >
+                       <br/><br/>
                     <GoogleLogin 
                         clientId="253598194229-90kkf0t65d0s0udro8msfpiomls3cpsi.apps.googleusercontent.com"
                         onSuccess={this.googleCallback}
@@ -46,14 +39,14 @@ render(){
                         buttonText="Continue with Google"
                        
                     />
-                    <br></br>
-                    <h6>↓-For Non Google Users-↓</h6>
+                    <br /><br /><br /><br /><br /><br />
+                    <h6>Don't have google Account ? </h6>
                     <a target="blank" href="https://accounts.google.com/signup/v2/webcreateaccount?continue=https%3A%2F%2Faccounts.google.com%2FManageAccount&gmb=exp&biz=false&flowName=GlifWebSignIn&flowEntry=SignUp"><h6>Create A Google Account</h6></a>
+                    </form>
                 </div>
             </div>
         </div>
     )
->>>>>>> master
   }
 }
 

@@ -1,5 +1,7 @@
 import React from "react";
-import Login from "./Login";
+
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Landing extends React.Component {
   render() {
@@ -11,12 +13,30 @@ class Landing extends React.Component {
                 <img className = "logo" src = "logo.png"></img>
                 </div>
              <div className = "col-md-10">
-                <nav className="navbar navbar-light-dark nav">
-                    <a className="navbar-brand" href="#">Login</a>
-                    <a className="navbar-brand" href="#">Features</a>
-                    <a className="navbar-brand" href="#">About Us</a>
-                    <a className="navbar-brand" href="#">FAQs</a>
-                    <a className="navbar-brand" href="#">Support</a>
+             <nav className="nav flex-row">
+                    <Link to="/login" className="nav-link text-light pb-4">
+                Login
+                </Link>
+                &emsp; &emsp; &emsp;
+                <Link to="/login" className="nav-link text-light pb-4">
+                Features
+                </Link>
+                &emsp; &emsp; &emsp;
+                <Link to="/login" className="nav-link text-light pb-4">
+                Support
+                </Link>
+                &emsp; &emsp; &emsp;
+                <Link to="/login" className="nav-link text-light pb-4">
+                About us
+                </Link>
+                &emsp; &emsp; &emsp;
+                <Link to="/login" className="nav-link text-light pb-4">
+                Contact Us
+                </Link>
+                &emsp; &emsp; &emsp;
+                <Link to="/login" className="nav-link text-light pb-4">
+                FAQs
+                </Link>
                   </nav>
             </div>
            </div>
@@ -40,8 +60,9 @@ class Landing extends React.Component {
         </div>
         <div className = "row">
           <div className = "col-md-7 offset-md-4">
-            <button className = "btn1" className = "btn btn-success">Try It Once </button> &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            <button className = "btn btn-info">Demo Chart</button>
+            <button className = "btn1" className = "btn btn-warning btn-lg"><Link to="/login">Try It Once</Link> </button>
+             &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            <button className = "btn btn-info btn-lg">Demo Chart</button>
            
             </div>
         </div>            
@@ -167,7 +188,7 @@ class Landing extends React.Component {
             <p>Subscribe to our Website</p>
             <input type = "email" placeholder = "Enter email-id" className = "form-control" />
             <br />
-            <button className ="btn btn-info">Go </button><Login />
+            <button className ="btn btn-info">Go </button>
           </div>
         </div>
       </div>
