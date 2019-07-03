@@ -20,7 +20,7 @@ googleCallback(response){
     }
     localStorage.setItem("user", JSON.stringify(user));
 
-    window.location.href = "/app";         
+    window.location.href = "/";         
 
     
 }
