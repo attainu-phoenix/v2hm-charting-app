@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 import Landing from "./components/Landing.js";
-import App from "./components/App.js";
+import App from "./components/app.js";
 
 class Home extends React.Component {
   render() {
