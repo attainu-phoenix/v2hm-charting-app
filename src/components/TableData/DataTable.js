@@ -3,7 +3,7 @@ import React from "react";
 import DataRow from "./DataRow";
 import Scroll from "../Scroll";
 
-import "../style/DataTable.css";
+import "../../style/DataTable.css";
 
 class DataTable extends React.Component {
   constructor(props) {
