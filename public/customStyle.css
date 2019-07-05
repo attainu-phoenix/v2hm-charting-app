@@ -1,56 +1,58 @@
-.top{
-    background: url('image4.jpg') no-repeat ;
-    height: 100vh;
+.top {
+  background: url("image4.jpg") no-repeat;
+  height: 100vh;
 }
-.nav{
-    background-color:black;
-    margin-top: 28px;
-}
-.logo{
-    height: 110px;
-    width: 240px;
-}
-.left1{
-    background-color: white;
-  
-    margin-top: 150px;
+.nav-landing {
+  background-color: green;
+  margin-top: 35px;
+  padding: 5px;
 }
 
-.right1{
-    background-color: lightgray;
-    padding: 5px;
-    margin-top: 150px;
+.logo {
+  height: 110px;
+  width: 240px;
 }
-.HomeText{
-    color: green    ;
-}
-.chart{
-    color: darkred;
-}
-.imgchart{
-    margin-top: 150px;
+.left1 {
+  background-color: white;
+
+  margin-top: 150px;
 }
 
-.team{
-    margin-top: 200px;
+.right1 {
+  background-color: lightgray;
+  padding: 5px;
+  margin-top: 150px;
+}
+.HomeText {
+  color: green;
+}
+.chart {
+  color: darkred;
+}
+.imgchart {
+  margin-top: 150px;
 }
 
-.feature{
-    margin-top: 150px;
+.team {
+  margin-top: 200px;
 }
-.feature1{
-    background-color: lightgray;
+
+.feature {
+  margin-top: 150px;
 }
-.feature2{
-    background-color: lightgray;
+.feature1 {
+  background-color: lightgray;
 }
-.feature3{
-    background-color: lightgray;
+.feature2 {
+  background-color: lightgray;
 }
-.footer{
-    margin-top: 200px;
-    background-color: lightblue;
-    padding: 30px;
+.feature3 {
+  background-color: lightgray;
+}
+.footer {
+  margin-top: 200px;
+  background-color: lightblue;
+  padding: 30px;
 }
 .login{
     background-color: lightgray;

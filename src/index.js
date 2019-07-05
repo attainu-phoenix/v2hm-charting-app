@@ -16,21 +16,18 @@ class Home extends React.Component {
       return <Redirect to="/" />;
     }
   }
-  
+
   render() {
-    
     return (
       <Router> 
         <Route path="/" exact={true} component={Landing} /> 
         <Route path = "/login" component = {Login} />
         <Route path="/app" component={App} />
         {this.doRedirect()}
-
       </Router>
-    );
+      );
+    }
   }
-}
-
-
+  
 ReactDOM.render(<Home />, document.getElementById("root"));
 
