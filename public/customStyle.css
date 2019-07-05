@@ -3,8 +3,9 @@
   height: 100vh;
 }
 .nav-landing {
-  background-color: black;
-  margin-top: 28px;
+  background-color: green;
+  margin-top: 35px;
+  padding: 5px;
 }
 
 .logo-landing {
@@ -53,10 +54,10 @@
   background-color: lightblue;
   padding: 30px;
 }
-.login{
-    background-color: lightgray;
-    margin-top: 20px;
+.login {
+  background-color: lightgray;
+  margin-top: 20px;
 }
-.login1{
-    margin-top: 160px;
+.login1 {
+  margin-top: 160px;
 }
