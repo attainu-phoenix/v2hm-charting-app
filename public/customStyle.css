@@ -3,11 +3,12 @@
   height: 100vh;
 }
 .nav-landing {
-  background-color: black;
-  margin-top: 28px;
+  background-color: green;
+  margin-top: 35px;
+  padding: 5px;
 }
 
-.logo-landing {
+.logo {
   height: 110px;
   width: 240px;
 }
