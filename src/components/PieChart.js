@@ -2,7 +2,7 @@ import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-import PieChartWrapper from "./PieChartWrapper.js";
+import PieComponent from "./PieChartWrapper.js";
 
 class PieChart extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class PieChart extends React.Component {
 
             <div className="col-md-6 offset-md-2">
             <div className="my-4">
-            <PieChartWrapper chartData={this.props.series} />
+            <PieComponent chartData={this.props.series} />
             </div>
 
 
@@ -39,6 +39,40 @@ class PieChart extends React.Component {
                 <div className="btn btn-warning ml-4">Area Chart</div>
             </div>
             </div>
+
+            <div className="col-md-2 offset-md-1">
+
+            <h5>SAVED CHARTS</h5>
+            <hr />
+            <br/>
+
+                <div className="card bg-secondary" style={{width: 180, height: 150, float: "left", marginBottom: 10}}>
+
+                    <div className="card-body">
+                    </div>
+                </div>
+
+                <div className="card bg-secondary" style={{width: 180, height: 150, float: "left", marginBottom: 10}}>
+
+                    <div className="card-body">
+                    </div>
+                </div>                
+
+                <div className="card bg-secondary" style={{width: 180, height: 150, float: "left", marginBottom: 10}}>
+
+                    <div className="card-body">
+                    </div>
+                </div>
+
+                <div className="card bg-secondary" style={{width: 180, height: 150, float: "left", marginBottom: 10}}>
+
+                    <div className="card-body">
+                    </div>
+                </div>
+                
+            </div>
+
+
 
         </div>
     );

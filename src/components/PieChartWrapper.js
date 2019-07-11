@@ -2,8 +2,9 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-const PieChartWrapper = (props) => {
-   console.log(props.chartData);
+class PieComponent extends React.Component{
+
+  render(){
 
         let options = {
         chart: {
@@ -56,7 +57,8 @@ const PieChartWrapper = (props) => {
               ]
             }
           ]
-        }  
+        }
+        
         return(
             <HighchartsReact
                 highcharts={Highcharts}
@@ -65,5 +67,6 @@ const PieChartWrapper = (props) => {
             />
         );
 }
+}
 
-export default PieChartWrapper;
+export default PieComponent;

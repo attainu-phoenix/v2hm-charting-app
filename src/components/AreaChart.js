@@ -2,7 +2,7 @@ import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-import AreaChartWrapper from "./AreaChartWrapper.js";
+import AreaComponent from "./AreaChartWrapper.js";
 
 class AreaChart extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class AreaChart extends React.Component {
             </div>            
             <div className="col-md-6 offset-md-2">
             <div className="my-4">
-                <AreaChartWrapper chartData={this.props.series} />
+                <AreaComponent chartData={this.props.series} />
 
             </div>
 
@@ -38,6 +38,41 @@ class AreaChart extends React.Component {
                 <div className="btn btn-warning ml-4">Area Chart</div>
             </div>
             </div>
+
+
+
+            <div className="col-md-2 offset-md-1">
+
+            <h5>SAVED CHARTS</h5>
+            <hr />
+            <br/>
+
+                <div className="card bg-secondary" style={{width: 180, height: 150, float: "left", marginBottom: 10}}>
+
+                    <div className="card-body">
+                    </div>
+                </div>
+
+                <div className="card bg-secondary" style={{width: 180, height: 150, float: "left", marginBottom: 10}}>
+
+                    <div className="card-body">
+                    </div>
+                </div>                
+
+                <div className="card bg-secondary" style={{width: 180, height: 150, float: "left", marginBottom: 10}}>
+
+                    <div className="card-body">
+                    </div>
+                </div>
+
+                <div className="card bg-secondary" style={{width: 180, height: 150, float: "left", marginBottom: 10}}>
+
+                    <div className="card-body">
+                    </div>
+                </div>
+                
+            </div>
+
 
         </div>
     );

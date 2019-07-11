@@ -2,12 +2,13 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-const AreaChartWrapper = (props) => {
-   console.log(props.chartData);
+class AreaComponent extends React.Component{
+
+    render() {
 
         let options = {
             chart: {
-                type: 'areaspline'
+                type: 'column'
                 },
             title: {
                 text: 'Average fruit consumption during one week'
@@ -33,7 +34,7 @@ const AreaChartWrapper = (props) => {
                     'Saturday',
                     'Sunday'
                 ],
-                plotBands: [{ // visualize the weekend
+                plotBands: [{
                     from: 4.5,
                     to: 6.5,
                     color: 'rgba(68, 170, 213, .2)'
@@ -62,16 +63,22 @@ const AreaChartWrapper = (props) => {
                 }, {
                     name: 'Jane',
                     data: [1, 3, 4, 3, 3, 5, 4]
+                }, {
+                    name: 'Jack',
+                    data: [3, 9, 5, 2, 2, 7, 6]
             }]
         };
 
+        return(
 
-    return(
-        <HighchartsReact
-            highcharts={Highcharts}
-            options={options}
-            oneToOne={true}
-        />
-    );
+            <HighchartsReact
+                highcharts={Highcharts}
+                options={options}
+                oneToOne={true}
+            />
+
+        );
+    }
 }
-export default AreaChartWrapper;
+
+export default AreaComponent;
