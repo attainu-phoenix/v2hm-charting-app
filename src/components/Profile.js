@@ -1,9 +1,10 @@
 import React, { useReducer } from 'react';
+import {getUserAccess} from "../store/api/index.js";
 class Profile extends React.Component{
 
     constructor(props){
         super(props);
-
+        
         this.state = {
             name: "",
             email:"",
@@ -12,10 +13,12 @@ class Profile extends React.Component{
     }
 
     componentDidMount(){
-        let user = localStorage.getItem("user");
+        
+       
 
-        user = JSON.parse(user);
-
+        let user = getUserAccess();
+        
+    
         this.setState({
             name: user.name,
             email: user.email,
