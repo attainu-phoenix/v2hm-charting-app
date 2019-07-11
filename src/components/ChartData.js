@@ -1,7 +1,5 @@
 import React from "react";
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
-import DataTable from "./DataTable";
+import Data from "./TableData/Data";
 
 import ChartComponent from './ChartComponent.js';
 
@@ -13,7 +11,7 @@ class ChartData extends React.Component {
         plotBackgroundColor: null,
         plotBorderWidth: null,
         plotShadow: false,
-        type: "line"
+        type: "column"
       },
       title: {
         text: "Export sales January, 2019"
@@ -60,29 +58,20 @@ class ChartData extends React.Component {
         }
       ]
     };
-    
-
   }
-
-
-
-  
-
-
-
   render() {
     return (
       <div className="row">
         <div className="col-md-6">
           <h4 className="mb-5">Make your chart</h4>
-          <div>
-            <DataTable />
-          </div>
-          <div className="mt-4">
-            <div className="btn btn-warning mr-4">Line Chart</div>
-            <div className="btn btn-warning mx-4">Pie Chart</div>
-            <div className="btn btn-warning mx-4">Bar Chart</div>
-            <div className="btn btn-warning ml-4">Area Chart</div>
+
+          <Data />
+
+          <div className="my-4 text-center">
+            <div className="btn btn-warning mr-3">Line Chart</div>
+            <div className="btn btn-warning mx-3">Pie Chart</div>
+            <div className="btn btn-warning mx-3">Bar Chart</div>
+            <div className="btn btn-warning ml-3">Area Chart</div>
           </div>
         </div>
         <div className="col-md-6">
@@ -93,12 +82,7 @@ class ChartData extends React.Component {
           </div>
           <div className="my-4">
           
-          
-          
-
-
-
-            <ChartComponent options={this.options} />
+          <ChartComponent options={this.options} />
 
           </div>
         </div>

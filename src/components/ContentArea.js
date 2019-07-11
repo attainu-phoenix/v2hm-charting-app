@@ -13,6 +13,7 @@ import CreateChart from "./CreateChart.js";
 // import DataType from "./DataType.js";
 import Profile from "./Profile.js";
 
+import Logout from "./logout.js";
 class ContentArea extends React.Component {
   render() {
     return (
@@ -29,7 +30,7 @@ class ContentArea extends React.Component {
 
 
           <Route path="/app/make-your-chart" component={ChartData} />
-          <Route path="/app/uploadCsv" component= {CSVFileUploader} />
+          <Route path="/app/uploadCsv" component={CSVFileUploader} />
 
           {/* <Route path="/app/linechart" component={LineChart} />
           <Route path="/app/areachart" component={AreaChart} />
@@ -37,6 +38,9 @@ class ContentArea extends React.Component {
           <Route path="/app/piechart" component={PieChart} /> */}
 
           <Route path="/app/profile" component={Profile} />
+          <Route path="/app/logout" component= {Logout} />
+
+          <Route path="/app/logout" component={Logout} />
 
         </div>
       </div>

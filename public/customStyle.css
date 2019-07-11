@@ -1,0 +1,63 @@
+.top {
+  background: url("image4.jpg") no-repeat;
+  height: 100vh;
+}
+.nav-landing {
+  background-color: green;
+  margin-top: 35px;
+  padding: 5px;
+}
+
+.logo-landing {
+  height: 110px;
+  width: 240px;
+}
+.left1 {
+  background-color: white;
+
+  margin-top: 150px;
+}
+
+.right1 {
+  background-color: lightgray;
+  padding: 5px;
+  margin-top: 150px;
+}
+.HomeText {
+  color: green;
+}
+.chart {
+  color: darkred;
+}
+.imgchart {
+  margin-top: 150px;
+}
+
+.team {
+  margin-top: 200px;
+}
+
+.feature {
+  margin-top: 150px;
+}
+.feature1 {
+  background-color: lightgray;
+}
+.feature2 {
+  background-color: lightgray;
+}
+.feature3 {
+  background-color: lightgray;
+}
+.footer {
+  margin-top: 200px;
+  background-color: lightblue;
+  padding: 30px;
+}
+.login{
+    background-color: lightgray;
+    margin-top: 20px;
+}
+.login1{
+    margin-top: 160px;
+}

@@ -1,37 +1,121 @@
 import React from "react";
 
 class CreateChart extends React.Component {
-    render() {
-        return (
-    
-            <div className="container">  
-                <div>CHOOSE INPUT METHOD</div>
-                <br />
-    
-                    <div className="card bg-info" style={{width: 180, height: 140, float: "left"}}>
-    
-                        <div className="card-body">
-                            <br />
-                            <a href="/app/make-your-chart"><p className="text-white">Input Data</p> </a>
-                        </div>
-                        </div>
-            
-    
-                    <div className="card bg-info text-white" style={{width: 180, height: 140, float: "left", marginLeft: 30}}>
-    
-                        <div className="card-body">
-                            <br />
-                            <a href="/app/uploadCsv"><p className="text-white">Upload CSV</p></a>
-                        </div>
-                    </div>
-    
-    
-    
-    
-    
-            </div>
-        );
-      }
+  render() {
+    return (
+      <div className="container">
+        <div>CREATE NEW CHART</div>
+        <br />
+
+        <div
+          className="card bg-info text-white"
+          style={{ width: 180, height: 140 }}
+        >
+          <div className="card-body">
+            <h1 className="display-1">+</h1>
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+
+        <div>SAVED CHARTS</div>
+        <br />
+
+        <div
+          className="card bg-secondary"
+          style={{ width: 180, height: 150, float: "left", marginBottom: 10 }}
+        >
+          <div className="card-body" />
+        </div>
+
+        <div
+          className="card bg-secondary"
+          style={{
+            width: 180,
+            height: 150,
+            float: "left",
+            marginLeft: 20,
+            marginBottom: 10
+          }}
+        >
+          <div className="card-body" />
+        </div>
+
+        <div
+          className="card bg-secondary"
+          style={{
+            width: 180,
+            height: 150,
+            float: "left",
+            marginLeft: 20,
+            marginBottom: 10
+          }}
+        >
+          <div className="card-body" />
+        </div>
+        <div
+          className="card bg-secondary"
+          style={{
+            width: 180,
+            height: 150,
+            float: "left",
+            marginLeft: 20,
+            marginBottom: 10
+          }}
+        >
+          <div className="card-body" />
+        </div>
+
+        <div
+          className="card bg-secondary"
+          style={{
+            width: 180,
+            height: 150,
+            float: "left",
+            marginLeft: 20,
+            marginBottom: 10
+          }}
+        >
+          <div className="card-body" />
+        </div>
+
+        <div
+          className="card bg-secondary"
+          style={{ width: 180, height: 150, float: "left" }}
+        >
+          <div className="card-body" />
+        </div>
+
+        <div
+          className="card bg-secondary"
+          style={{ width: 180, height: 150, float: "left", marginLeft: 20 }}
+        >
+          <div className="card-body" />
+        </div>
+
+        <div
+          className="card bg-secondary"
+          style={{ width: 180, height: 150, float: "left", marginLeft: 20 }}
+        >
+          <div className="card-body" />
+        </div>
+        <div
+          className="card bg-secondary"
+          style={{ width: 180, height: 150, float: "left", marginLeft: 20 }}
+        >
+          <div className="card-body" />
+        </div>
+
+        <div
+          className="card bg-secondary"
+          style={{ width: 180, height: 150, float: "left", marginLeft: 20 }}
+        >
+          <div className="card-body" />
+        </div>
+      </div>
+    );
+  }
 }
    
 
