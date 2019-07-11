@@ -13,6 +13,7 @@ import CreateChart from "./CreateChart.js";
 import DataType from "./DataType.js";
 import Profile from "./Profile.js";
 import Logout from "./logout.js";
+import {getUserAccess} from "../store/api/index.js";
 class ContentArea extends React.Component {
   constructor(props){
     super(props);
@@ -23,10 +24,9 @@ class ContentArea extends React.Component {
     }
 
     componentDidMount(){
-        let user = localStorage.getItem("user");
-
-        user = JSON.parse(user);
-
+      
+      let user = getUserAccess();
+        
         this.setState({
             name: user.name
             
