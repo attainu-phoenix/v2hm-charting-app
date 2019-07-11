@@ -1,3 +1,25 @@
-.react-grid-Row:first-child {
-  font-weight: bold;
+th h6 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+input {
+  padding: 0 0.4em;
+}
+
+input:focus {
+  outline: none;
+}
+
+.table tr:first-child input {
+  font-style: italic;
+}
+
+.table td,
+.table th {
+  padding: 5px;
+}
+
+.table tr th:first-child {
+  padding: 5px 10px;
 }
