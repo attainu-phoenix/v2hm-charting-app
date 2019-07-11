@@ -2,6 +2,7 @@ import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import Data from "./TableData/Data";
+import CSVFileUploader from './CsvFileUploader';
 
 class ChartData extends React.Component {
   constructor(props) {
@@ -62,6 +63,12 @@ class ChartData extends React.Component {
 
   render() {
     return (
+      <div>
+      <div className = 'row'>
+        <div className = 'col-md-6'>
+          <CSVFileUploader />
+        </div>
+      </div>
       <div className="row">
         <div className="col-md-6">
           <h4 className="mb-5">Make your chart</h4>
@@ -86,6 +93,7 @@ class ChartData extends React.Component {
           </div>
         </div>
       </div>
+    </div>
     );
   }
 }
