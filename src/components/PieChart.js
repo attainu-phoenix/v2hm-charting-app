@@ -74,13 +74,7 @@ class PieChart extends React.Component {
           <div className="my-4">
             <HighchartsReact highcharts={Highcharts} options={this.state} />
           </div>
-
-          <div className="mt-4">
-            <div className="btn btn-warning mr-4">Line Chart</div>
-            <div className="btn btn-warning mx-4">Pie Chart</div>
-            <div className="btn btn-warning mx-4">Bar Chart</div>
-            <div className="btn btn-warning ml-4">Area Chart</div>
-          </div>
+ 
         </div>
       </div>
     );

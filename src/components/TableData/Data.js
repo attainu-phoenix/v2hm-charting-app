@@ -1,8 +1,10 @@
 import React from "react";
 
 import DataTable from "./DataTable";
+import { connect } from "react-redux";
+import { stateMapper } from "../../store/store";
 
-class Data extends React.Component {
+class DataComponent extends React.Component {
   constructor(props) {
     super(props);
 
@@ -95,6 +97,11 @@ class Data extends React.Component {
       return data;
     });
     this.setState({ datas: newData });
+
+    this.props.dispatch({
+      type: "UPDATE_TABLE",
+      item
+    });
   }
 
   render() {
@@ -108,5 +115,7 @@ class Data extends React.Component {
     );
   }
 }
+
+let Data = connect(stateMapper)(DataComponent);
 
 export default Data;

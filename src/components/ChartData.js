@@ -11,7 +11,7 @@ class ChartData extends React.Component {
         plotBackgroundColor: null,
         plotBorderWidth: null,
         plotShadow: false,
-        type: "pie"
+        type: "bar"
       },
       title: {
         text: "Export sales January, 2019"
@@ -76,10 +76,9 @@ class ChartData extends React.Component {
           </div>
         </div>
         <div className="col-md-6">
-          <div>
-            <button className="btn btn-primary ml-5 mr-3">New Chart</button>
+          <div className="text-center">
             <button className="btn btn-primary mx-3">Save Chart</button>
-            <button className="btn btn-primary ml-3">Reset Fields</button>
+            <button className="btn btn-primary mx-3">Reset Fields</button>
           </div>
           <div className="my-4">
             <HighchartsReact highcharts={Highcharts} options={this.state} />
