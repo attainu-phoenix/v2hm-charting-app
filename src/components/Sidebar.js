@@ -16,9 +16,6 @@ class Sidebar extends React.Component {
                 CREATE +
               </Link>
 
-              <Link to="/app/datatype" className="nav-link text-light pb-4">
-                DATA TYPE
-              </Link>
 
               <Link to="/app/uploadCsv" className="nav-link text-light pb-4">
                 UPLOAD FILE
@@ -30,7 +27,7 @@ class Sidebar extends React.Component {
                 DATA INPUT
               </Link>
 
-              <Link to="/app/linechart" className="nav-link text-light">
+              {/* <Link to="/app/linechart" className="nav-link text-light">
                 LINE CHART
               </Link>
               <Link to="/app/areachart" className="nav-link text-light">
@@ -44,7 +41,7 @@ class Sidebar extends React.Component {
                 className="nav-link text-light pb-5 mb-5"
               >
                 PIE CHART
-              </Link>
+              </Link> */}
 
               <Link to="/app/profile" className="nav-link text-light pt-5 mt-5">
                 PROFILE
