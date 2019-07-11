@@ -33,7 +33,7 @@ googleCallback(response){
         <div className = "container-fluid top">
            <div className = "row">
              <div className = "col-md-2">
-                <img className = "logo" src = "logo.png"></img>
+                <img className = "logo-landing" src = "logo.png"></img>
                 </div>
              <div className = "col-md-10">
              <nav className="nav flex-row nav-landing">

@@ -1,17 +1,17 @@
 import React from "react";
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
 import Data from "./TableData/Data";
+
+import ChartComponent from './ChartComponent.js';
 
 class ChartData extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.options = {
       chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
         plotShadow: false,
-        type: "pie"
+        type: "column"
       },
       title: {
         text: "Export sales January, 2019"
@@ -59,7 +59,6 @@ class ChartData extends React.Component {
       ]
     };
   }
-
   render() {
     return (
       <div className="row">
@@ -82,7 +81,9 @@ class ChartData extends React.Component {
             <button className="btn btn-primary ml-3">Reset Fields</button>
           </div>
           <div className="my-4">
-            <HighchartsReact highcharts={Highcharts} options={this.state} />
+          
+          <ChartComponent options={this.options} />
+
           </div>
         </div>
       </div>
