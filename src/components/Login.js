@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { GoogleLogin } from "react-google-login";
 
 class Login extends React.Component {
@@ -7,6 +8,7 @@ class Login extends React.Component {
 
     this.googleCallback = this.googleCallback.bind(this);
   }
+
   googleCallback(response) {
     if (!response || !response.accessToken) {
       alert("Google signin failed. Please try again");
@@ -14,7 +16,9 @@ class Login extends React.Component {
     }
     let user = {
       token: response.accessToken,
-      name: response.profileObj.name
+      name: response.profileObj.name,
+      imageUrl: response.profileObj.imageUrl,
+      email: response.profileObj.email
     };
     localStorage.setItem("user", JSON.stringify(user));
 
