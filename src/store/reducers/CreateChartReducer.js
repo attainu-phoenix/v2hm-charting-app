@@ -1,9 +1,9 @@
 import {store} from '../store.js';
 
-function createChartReducer(chartData = {}, action) {
+function createChartReducer(chartData = [], action) {
 
     if (action.type === "CLEAR_CHARTS"){
-        return {};
+        return [];
     }
 
     if (action.type === "CREATE_CHART"){
@@ -19,13 +19,13 @@ function createChartReducer(chartData = {}, action) {
 
     if (action.type === "UPDATE_CHART"){
 
-        updateChart(store, action);
+        editOneChart(store, action);
         return chartData;
     }
 
-    if (action.type === "GET_CHARTDATA") {
+    if (action.type === "GET_CHART") {
 
-        uploadCsv(store, action);
+        getOneChart(store, action);
         return chartData;
     }
 
