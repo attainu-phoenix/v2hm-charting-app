@@ -81,7 +81,7 @@ class ChartData extends React.Component {
             <button className="btn btn-primary ml-3">Reset Fields</button>
           </div>
           <div className="my-4">
-          
+         
           <ChartComponent options={this.options} />
 
           </div>
