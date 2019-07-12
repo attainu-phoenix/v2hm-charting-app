@@ -1,27 +1,33 @@
 import React from "react";
-import { GoogleLogin } from "react-google-login";
+import ReactDOM from "react-dom";
+import {GoogleLogin} from "react-google-login";
 
 class Login extends React.Component {
-
-  constructor(props) {
+  
+  constructor(props){
     super(props);
 
     this.googleCallback = this.googleCallback.bind(this);
-  }
-  googleCallback(response) {
-    if (!response || !response.accessToken) {
-      alert("Google signin failed. Please try again");
-      return;
+}
+
+googleCallback(response){
+    if(!response || !response.accessToken){
+        alert("Google signin failed. Please try again");
+        return;
     }
     let user = {
-      token: response.accessToken,
-      name: response.profileObj.name
-    };
+        token: response.accessToken,
+        name: response.profileObj.name,
+        imageUrl: response.profileObj.imageUrl,
+        email: response.profileObj.email
+
+    }
     localStorage.setItem("user", JSON.stringify(user));
 
-    window.location.href = "/app";
-  }
+    window.location.href = "/app";         
 
+    
+}
 
 render(){
     return(
