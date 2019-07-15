@@ -3,35 +3,36 @@ const HEADERS = {
     "Content-Type": "application/json"
 };
 
-export function createChart() {
+ function createChart(store,action) {
     let url = "http://localhost:1337/parse/classes/charts";
    
        fetch(url, {
            method: "post",
            headers: HEADERS,
            body: JSON.stringify({
-               userId: "33sEqWyntO",
-               name: "Export sales, Feb 2019",
+               userId: "33sEqWyntO" ,
+               name: "Export sales, Janurary 2019",
                chartType: "bar",
                chartData: [
-                   {x: 10, y: 35},
-                   {x: 11, y: 25},
-                   {x: 12, y: 15}
+                {x: 10, y: 35},
+                {x: 11, y: 25},
+                {x: 12, y: 15}
                ]
            })
        })
        .then(data => data.json())
-       .then(json => {
-           console.log(json);
+       .then(result => {
+           store.dispatch({
+               type:"CREATE_CHART",
+               chartData:result
+           })
+           console.log(result);
        })
-      
        .catch(err => console.log(err));
    }
    
-   
-   
-  export function getAllCharts() {
-       let userId = "33sEqWyntO";
+   function getAllCharts(store,action) {
+       let userId = "33sEqWyntO" ;
    
    
        let params = encodeURI(`where={"userId": "${userId}"}`);
@@ -42,16 +43,18 @@ export function createChart() {
            headers: HEADERS
        })
        .then(data => data.json())
-       .then(json => {
-           console.log(json);
+       .then(result => {
+           store.dispatch({
+               type:"GET_ALL_CHARTS",
+               data:result
+           })
+           console.log(result);
        })
        .catch(err => console.log(err));
    }
    
-   
-   
-   export function getOneChart() {
-       let chartId = "T5d85d4GcK";
+   function getOneChart(store,action) {
+       let chartId = "0eG4R8t4xX"  ;
    
    
        let url = `http://localhost:1337/parse/classes/charts/${chartId}`;
@@ -61,14 +64,18 @@ export function createChart() {
            headers: HEADERS
        })
        .then(data => data.json())
-       .then(json => {
-           console.log(json);
+       .then(result => {
+           store.dispatch({
+               type:"GET_CHART",
+               chartData:result
+           })
+           console.log(result);
        })
        .catch(err => console.log(err));
    }
    
-    export function editOneChart() {
-       let chartId ="T5d85d4GcK";
+   function editOneChart(store,action) {
+       let chartId = "0eG4R8t4xX" ;
        let url = `http://localhost:1337/parse/classes/charts/${chartId}`;
    
        fetch(url, {
@@ -76,29 +83,30 @@ export function createChart() {
            headers: HEADERS,
            body: JSON.stringify({
                userId: "33sEqWyntO",
-               name: "Export sales, Mar 2019,",
-               chartType: "line",
+               name: "Export sales, Janurary 2019,",
+               chartType: "bar",
                chartData: [
-                   {x: 12, y: 35},
-                   {x: 14, y: 25},
-                   {x: 15, y: 15},
-                   {x: 16, y: 10},
-                   {x: 17, y: 15}
-                   
+                {x: 12, y: 35},
+                {x: 14, y: 25},
+                {x: 15, y: 15},
+                {x: 16, y: 10},
+                {x: 17, y: 15}     
                ]
            })
        })
        .then(data => data.json())
-       .then(json => {
-               console.log(json);
+       .then(result => {
+           store.dispatch({
+               type:"UPDATE_CHART",
+               chartData:result
            })
+           console.log(result);
+       })
        .catch(err => console.log(err));
    }
    
-   
-   
-    export function removeChart() {
-       let chartId = "uEicKoeijv";
+   function removeChart(store,action) {
+       let chartId = "0eG4R8t4xX" ;
    
    
        let url = `http://localhost:1337/parse/classes/charts/${chartId}`;
@@ -108,9 +116,14 @@ export function createChart() {
            headers: HEADERS
        })
        .then(data => data.json())
-       .then(json => {
-           console.log(json);
+       .then(result => {
+           store.dispatch({
+               type:"CLEAR_CHARTS",
+               chartData:""
+           })
+           console.log();
        })
        .catch(err => console.log(err));
    }
-   
+
+   export {createChart,getAllCharts,getOneChart,editOneChart,removeChart}

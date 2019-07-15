@@ -1,52 +1,22 @@
-import {createStore} from 'redux';
-
-let reducer = function(oldState, action) {
-    let initialState = {
-        isChartLoading: false,
-
-    };
-
-    if(!oldState) { return initialState; }
-
-    let newState = initialState;
-
-    if(action.type == "FETCH_CHART") {
-
-        // fetch("https://dog.ceo/api/breeds/list/all")
-        //     .then(function(response) {
-        //         return response.json();
-        //     })
-        //     .then(function(data) {
-        //         store.dispatch({
-        //             type: "MENU_LOADED",
-        //             data: Object.keys(data.message)
-        //         });
-        //     })
-        //     .catch(function(err){
-        //         console.log(err);
-        //     });
-
-        newState.isChartLoading = true;
-    }
+import {createStore, combineReducer} from 'redux';
+import createChartReducer from './reducers/CreateChartReducer.js';
+import saveChartsReducer from './reducers/saveChartsReducer.js';
 
 
-    if(action.type == "CHART_LOADED") {
-        newState.breeds = action.data;
-    }
-    return newState;
-}
 
+let reducer = combineReducer({
+    charts: createChartReducer,
+    allCharts: saveChartsReducer
+});
 
 let store = createStore(reducer);
 
+store.subscribe(() => {
+    console.log("dispatched ==>", store.getState());
+})
 
-store.subscribe(function(){
-    console.log( store.getState() );
-});
-
-
-function storeMapper(state) {
+function stateMapper(state) {
     return state;
 }
 
-export {store, storeMapper};
+export {state, stateMapper};
