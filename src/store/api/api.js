@@ -9,21 +9,12 @@ const HEADERS = {
        fetch(url, {
            method: "post",
            headers: HEADERS,
-           body: JSON.stringify({
-               userId: "33sEqWyntO" ,
-               name: "Export sales, Janurary 2019",
-               chartType: "bar",
-               chartData: [
-                {x: 10, y: 35},
-                {x: 11, y: 25},
-                {x: 12, y: 15}
-               ]
-           })
+           body: JSON.stringify(action.newData)
        })
        .then(data => data.json())
        .then(result => {
            store.dispatch({
-               type:"CREATE_CHART",
+               type:"CHART_CREATED",
                chartData:result
            })
            console.log(result);
@@ -32,7 +23,7 @@ const HEADERS = {
    }
    
    function getAllCharts(store,action) {
-       let userId = "33sEqWyntO" ;
+       let userId = JSON.stringify(action.allcharts);
    
    
        let params = encodeURI(`where={"userId": "${userId}"}`);
@@ -45,7 +36,7 @@ const HEADERS = {
        .then(data => data.json())
        .then(result => {
            store.dispatch({
-               type:"GET_ALL_CHARTS",
+               type:"CHARTS_LOADED",
                data:result
            })
            console.log(result);
@@ -54,7 +45,7 @@ const HEADERS = {
    }
    
    function getOneChart(store,action) {
-       let chartId = "0eG4R8t4xX"  ;
+       let chartId = JSON.stringify(action.onechart);
    
    
        let url = `http://localhost:1337/parse/classes/charts/${chartId}`;
@@ -66,7 +57,7 @@ const HEADERS = {
        .then(data => data.json())
        .then(result => {
            store.dispatch({
-               type:"GET_CHART",
+               type:"CHART_LOADED",
                chartData:result
            })
            console.log(result);
@@ -75,29 +66,18 @@ const HEADERS = {
    }
    
    function editOneChart(store,action) {
-       let chartId = "0eG4R8t4xX" ;
+       let chartId = JSON.stringify(action.editonechart) ;
        let url = `http://localhost:1337/parse/classes/charts/${chartId}`;
    
        fetch(url, {
            method: "put",
            headers: HEADERS,
-           body: JSON.stringify({
-               userId: "33sEqWyntO",
-               name: "Export sales, Janurary 2019,",
-               chartType: "bar",
-               chartData: [
-                {x: 12, y: 35},
-                {x: 14, y: 25},
-                {x: 15, y: 15},
-                {x: 16, y: 10},
-                {x: 17, y: 15}     
-               ]
-           })
+           body: JSON.stringify(action.newData)
        })
        .then(data => data.json())
        .then(result => {
            store.dispatch({
-               type:"UPDATE_CHART",
+               type:"CHART_UPDATED",
                chartData:result
            })
            console.log(result);
@@ -106,7 +86,7 @@ const HEADERS = {
    }
    
    function removeChart(store,action) {
-       let chartId = "0eG4R8t4xX" ;
+       let chartId = JSON.stringify(action.removeonechart)  ;
    
    
        let url = `http://localhost:1337/parse/classes/charts/${chartId}`;
@@ -118,7 +98,7 @@ const HEADERS = {
        .then(data => data.json())
        .then(result => {
            store.dispatch({
-               type:"CLEAR_CHARTS",
+               type:"CHART_REMOVED",
                chartData:""
            })
            console.log();

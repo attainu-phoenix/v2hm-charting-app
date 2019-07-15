@@ -1,13 +1,13 @@
 import {createChart,getOneChart,editOneChart,removeChart} from '../api/api.js';
 import {store} from '../store.js';
 
-function createChartReducer(chartData = [], action) {
+function ChartReducer(chartData = [], action) {
 
-    if (action.type === "CLEAR_CHARTS"){
+    if (action.type === "REMOVE_CHARTS"){
         removeChart(store,action)
         return [];
     }
-
+    
     if (action.type === "CREATE_CHART"){
 
         createChart(store, action);
@@ -34,4 +34,4 @@ function createChartReducer(chartData = [], action) {
         return chartData;
 }
 
-export default createChartReducer;
+export default ChartReducer;
