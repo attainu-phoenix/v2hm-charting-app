@@ -12,7 +12,9 @@ function updateChartReducer(oldState, action) {
   newState.data = oldState.data;
 
   if (action.type === "UPDATE_CHART") {
-    newState.data = Object.assign(action.chart_data);
+    console.log(action.chart_data);
+    newState.data = action.chart_data;
+    console.log(newState);
   }
 
   if (action.type === "CLEAR_CHART") {

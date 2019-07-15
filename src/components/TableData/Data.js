@@ -9,50 +9,35 @@ class DataComponent extends React.Component {
     super(props);
 
     this.state = {};
-    this.state.datas = [
-      {
-        id: 1,
-        name: "Coca Cola",
-        y: 40,
-        c: "",
-        d: "",
-        e: ""
-      },
-      {
-        id: 2,
-        name: "Pepsi",
-        y: 20,
-        c: "",
-        d: "",
-        e: ""
-      },
-      {
-        id: 3,
-        name: "Red Bull",
-        y: 15,
-        c: "",
-        d: "",
-        e: ""
-      },
-      {
-        id: 4,
-        name: "Kingfisher",
-        y: 10,
-        c: "",
-        d: "",
-        e: ""
-      },
-      {
-        id: 5,
-        name: "Carlsberg",
-        y: 15,
-        c: "",
-        d: "",
-        e: ""
-      }
-    ];
+    // this.state.datas = [
+    //   {
+    //     id: 1,
+    //     name: "Coca Cola",
+    //     y: 40
+    //   },
+    //   {
+    //     id: 2,
+    //     name: "Pepsi",
+    //     y: 20
+    //   },
+    //   {
+    //     id: 3,
+    //     name: "Red Bull",
+    //     y: 15
+    //   },
+    //   {
+    //     id: 4,
+    //     name: "Kingfisher",
+    //     y: 10
+    //   },
+    //   {
+    //     id: 5,
+    //     name: "Carlsberg",
+    //     y: 15
+    //   }
+    // ];
 
-    this.options = {
+    this.state.options = {
       chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
@@ -79,7 +64,33 @@ class DataComponent extends React.Component {
         {
           name: "Brands",
           colorByPoint: true,
-          data: this.state.datas
+          data: [
+            {
+              id: 1,
+              name: "Coca Cola",
+              y: 40
+            },
+            {
+              id: 2,
+              name: "Pepsi",
+              y: 20
+            },
+            {
+              id: 3,
+              name: "Red Bull",
+              y: 15
+            },
+            {
+              id: 4,
+              name: "Kingfisher",
+              y: 10
+            },
+            {
+              id: 5,
+              name: "Carlsberg",
+              y: 15
+            }
+          ]
         }
       ]
     };
@@ -88,54 +99,66 @@ class DataComponent extends React.Component {
   }
 
   handleAddRow(evt) {
-    var id = Math.floor(Math.random() * 99999);
-    var data = {
+    let id = Math.floor(Math.random() * 99999);
+    let newData = {
       id: id,
       name: "",
-      y: "",
-      c: "",
-      d: "",
-      e: ""
+      y: 0
     };
-    this.state.datas.push(data);
-    this.setState(this.state.datas);
+
+    let options = this.state.options;
+    let tableData = this.state.options.series[0].data;
+
+    tableData.push(newData);
+    delete options.series[0];
+    options.series[0] = tableData;
+
+    this.setState({ options: Object.assign({}, options) });
   }
 
   handleRowDel(data) {
-    var index = this.state.datas.indexOf(data);
-    this.state.datas.splice(index, 1);
-    this.setState(this.state.datas);
+    let tableData = this.state.options.series[0].data;
+    let index = tableData.indexOf(data);
+
+    tableData.splice(index, 1);
+    this.setState(tableData);
   }
 
   handleTableUpdate(evt) {
-    var item = {
+    console.log(evt.target.name);
+
+    let item = {
       id: evt.target.id,
       name: evt.target.name,
       value: evt.target.value
     };
-    var datas = this.state.datas.slice();
-    var newData = datas.map(function(data) {
+    let datas = this.state.options.series[0].data.slice();
+    let newData = datas.map(function(data) {
       for (var key in data) {
         if (key == item.name && data.id == item.id) {
-          data[key] = item.value;
+          if (item.name === "y") {
+            data[key] = parseInt(item.value, 10);
+          } else {
+            data[key] = item.value;
+          }
         }
       }
       return data;
     });
-    this.setState({ datas: newData });
+    this.setState({ data: newData });
   }
 
   updateChartHandle() {
     this.props.dispatch({
       type: "UPDATE_CHART",
-      chart_data: this.options
+      chart_data: this.state.options
     });
   }
 
   componentWillUnmount() {
     this.props.dispatch({
       type: "CLEAR_CHART",
-      chart_data: this.options
+      chart_data: this.state.options
     });
   }
 
@@ -156,7 +179,7 @@ class DataComponent extends React.Component {
           onTableUpdate={this.handleTableUpdate.bind(this)}
           onRowAdd={this.handleAddRow.bind(this)}
           onRowDel={this.handleRowDel.bind(this)}
-          datas={this.state.datas}
+          datas={this.state.options.series[0].data}
         />
         <div className="btn btn-warning mr-3" onClick={this.updateChartHandle}>
           Update Chart
