@@ -1,17 +1,69 @@
 import React from "react";
 import Data from "./TableData/Data";
+import ReactDOM from "react-dom";
 
 import ChartComponent from './ChartComponent.js';
 
 class ChartData extends React.Component {
   constructor(props) {
     super(props);
+
+    this.lineButton = this.lineButton.bind(this);
+    this.barButton = this.barButton.bind(this);
+    this.areaButton = this.areaButton.bind(this);
+    this.pieButton = this.pieButton.bind(this);
+
+
+    this.state = {
+      type: "line"
+    }
+
+
+  }
+
+  lineButton(){
+    this.setState({
+      type: "line"
+    });      
+
+  }
+
+
+  barButton(){
+    console.log("bar button clicked");
+
+    this.setState({
+      type: "bar"
+    });      
+
+  }
+
+  areaButton(){
+    console.log("area button clicked");
+
+    this.setState({
+      type: "column"
+    });      
+
+  }
+
+  pieButton(){
+    console.log("pie button clicked");
+
+    this.setState({
+      type: "pie"
+    });      
+
+  }
+
+  render() {
+
     this.options = {
       chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
         plotShadow: false,
-        type: "column"
+        type: this.state.type
       },
       title: {
         text: "Export sales January, 2019"
@@ -58,8 +110,7 @@ class ChartData extends React.Component {
         }
       ]
     };
-  }
-  render() {
+
     return (
       <div className="row">
         <div className="col-md-6">
@@ -68,10 +119,11 @@ class ChartData extends React.Component {
           <Data />
 
           <div className="my-4 text-center">
-            <div className="btn btn-warning mr-3">Line Chart</div>
-            <div className="btn btn-warning mx-3">Pie Chart</div>
-            <div className="btn btn-warning mx-3">Bar Chart</div>
-            <div className="btn btn-warning ml-3">Area Chart</div>
+              <button onClick={this.lineButton} className="btn btn-primary mr-3">Line Chart</button>
+              <button onClick={this.barButton} className="btn btn-primary mr-3">Bar Chart</button>
+              <button onClick={this.areaButton} className="btn btn-primary mr-3">Column Chart</button>
+              <button onClick={this.pieButton} className="btn btn-primary mr-3">Pie Chart</button>
+
           </div>
         </div>
         <div className="col-md-6">
