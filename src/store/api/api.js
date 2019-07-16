@@ -23,10 +23,8 @@ const HEADERS = {
    }
    
    function getAllCharts(store,action) {
-       let userId = JSON.stringify(action.allcharts);
-   
-   
-       let params = encodeURI(`where={"userId": "${userId}"}`);
+       
+       let params = encodeURI(`where={"userId": "${action.allcharts.userId}"}`);
        let url = `http://localhost:1337/parse/classes/charts?${params}`;
    
        fetch(url, {
@@ -37,7 +35,7 @@ const HEADERS = {
        .then(result => {
            store.dispatch({
                type:"CHARTS_LOADED",
-               data:result
+               charts:result
            })
            console.log(result);
        })
@@ -45,10 +43,8 @@ const HEADERS = {
    }
    
    function getOneChart(store,action) {
-       let chartId = JSON.stringify(action.onechart);
-   
-   
-       let url = `http://localhost:1337/parse/classes/charts/${chartId}`;
+         
+       let url = `http://localhost:1337/parse/classes/charts/${action.onechart.chartId}`;
    
        fetch(url, {
            method: "get",
@@ -66,13 +62,13 @@ const HEADERS = {
    }
    
    function editOneChart(store,action) {
-       let chartId = JSON.stringify(action.editonechart) ;
-       let url = `http://localhost:1337/parse/classes/charts/${chartId}`;
-   
+       
+       let url = `http://localhost:1337/parse/classes/charts/${action.editonechart.chartId}`;
+       
        fetch(url, {
            method: "put",
            headers: HEADERS,
-           body: JSON.stringify(action.newData)
+           body: JSON.stringify(action.updatedData)
        })
        .then(data => data.json())
        .then(result => {
@@ -86,10 +82,8 @@ const HEADERS = {
    }
    
    function removeChart(store,action) {
-       let chartId = JSON.stringify(action.removeonechart)  ;
-   
-   
-       let url = `http://localhost:1337/parse/classes/charts/${chartId}`;
+
+       let url = `http://localhost:1337/parse/classes/charts/${action.removechart.chartId}`;
    
        fetch(url, {
            method: "delete",
@@ -101,7 +95,7 @@ const HEADERS = {
                type:"CHART_REMOVED",
                chartData:""
            })
-           console.log();
+         console.log(result) 
        })
        .catch(err => console.log(err));
    }

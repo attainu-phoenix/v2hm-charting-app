@@ -6,6 +6,8 @@ import Login from "./components/Login.js";
 import Landing from "./components/Landing.js";
 import App from "./components/app.js";
 
+import {store} from "./store/store.js";
+
 class Home extends React.Component {
   doRedirect() {
     let loggedIn = localStorage.getItem("user");

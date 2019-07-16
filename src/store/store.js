@@ -1,11 +1,10 @@
-import {createStore, combineReducer} from 'redux';
+import {createStore, combineReducers} from 'redux';
 import ChartReducer from './reducers/ChartReducer.js';
 import saveChartsReducer from './reducers/saveChartsReducer.js';
 
 
-
-let reducer = combineReducer({
-    chart: ChartReducer,
+let reducer = combineReducers({
+    chartData: ChartReducer,
     charts: saveChartsReducer
 });
 
@@ -19,7 +18,15 @@ function stateMapper(state) {
     return state;
 }
 
-store.dispatch({
+/*store.dispatch({
+    type: "REMOVE_CHART",
+    removechart:({
+        chartId: "AG5EQuyKZP"
+    })
+})*/
+
+
+/*store.dispatch({
     type: "CREATE_CHART",
     newData: ({
         userId: "33sEqWyntO" ,
@@ -31,33 +38,34 @@ store.dispatch({
          {x: 12, y: 15}
         ]
     })
-})
+})*/ 
 
-store.dispatch({
+/*store.dispatch({
     type: "GET_CHART",
     onechart:({
         chartId: "0eG4R8t4xX" 
     })
-})
+})*/
 
-store.dispatch({
+
+/*store.dispatch({
     type: "GET_ALL_CHARTS",
     allcharts:({
         userId: "33sEqWyntO"
     })
-})
+})*/
 
 
 
-store.dispatch({
+/*store.dispatch({
     type: "UPDATE_CHART",
     editonechart:({
-        chartId: "0eG4R8t4xX" 
+        chartId: "T5d85d4GcK" 
     }),
     updatedData:({
         userId: "33sEqWyntO",
-        name: "Export sales, Janurary 2019,",
-        chartType: "bar",
+        name: "Export sales, Feburary 2019,",
+        chartType: "line",
         chartData: [
          {x: 12, y: 35},
          {x: 14, y: 25},
@@ -66,14 +74,9 @@ store.dispatch({
          {x: 17, y: 15}     
        ]
    })
-})
-
-store.dispatch({
-    type: "REMOVE_CHART",
-    reomoveonechart:({
-        chartId: "0eG4R8t4xX"
-    })
-})
+})*/
 
 
-export {state, stateMapper};
+
+
+export {store, stateMapper};
