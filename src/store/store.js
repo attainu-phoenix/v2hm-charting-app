@@ -4,8 +4,6 @@ import saveChartsReducer from "./reducers/saveChartsReducer.js";
 import updateChartReducer from "./reducers/updateChartReducer";
 
 let reducer = combineReducers({
-  chart: ChartReducer,
-  charts: saveChartsReducer,
   updateChart: updateChartReducer
 });
 
