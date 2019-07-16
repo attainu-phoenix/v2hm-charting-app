@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import Dashboard from "./Dashboard.js";
 import DataType from "./DataType";
-import CSVFileUploader from "./CSVFileUploader.js";
+import CSVFileUploader from "./CsvFileUploader.js";
 import ChartData from "./ChartData";
 
 import Profile from "./Profile.js";
