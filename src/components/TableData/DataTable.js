@@ -3,25 +3,32 @@ import React from "react";
 import DataRow from "./DataRow";
 import Scroll from "../Scroll";
 
-import "../style/DataTable.css";
+import "../../style/DataTable.css";
 
 class DataTable extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
-    var onTableUpdate = this.props.onTableUpdate;
-    var rowDel = this.props.onRowDel;
-    var data = this.props.datas.map(function(data) {
-      return (
-        <DataRow
-          onTableUpdate={onTableUpdate}
-          data={data}
-          onDelEvent={rowDel.bind(this)}
-          key={data.id}
-        />
-      );
-    });
+    let onTableUpdate = this.props.onTableUpdate;
+    let rowDel = this.props.onRowDel;
+    // console.log("my dataa", this.props.datas);
+    let data = this.props.datas;
+    if (!data) {
+      return <div>loading..</div>;
+    } else {
+      data.map(data => {
+        return (
+          <DataRow
+            onTableUpdate={onTableUpdate}
+            data={data}
+            onDelEvent={rowDel.bind(this)}
+            key={data.id}
+          />
+        );
+      });
+    }
+
     return (
       <div>
         <Scroll>
@@ -34,15 +41,6 @@ class DataTable extends React.Component {
                 </th>
                 <th scope="col">
                   <h6>B</h6>
-                </th>
-                <th scope="col">
-                  <h6>C</h6>
-                </th>
-                <th scope="col">
-                  <h6>D</h6>
-                </th>
-                <th scope="col">
-                  <h6>E</h6>
                 </th>
               </tr>
             </thead>

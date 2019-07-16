@@ -1,80 +1,77 @@
 import React from "react";
-import {GoogleLogin} from "react-google-login";
+import { GoogleLogin } from "react-google-login";
 
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 class Landing extends React.Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.googleCallback = this.googleCallback.bind(this);
-}
+  }
 
-googleCallback(response){
-    if(!response || !response.accessToken){
-        alert("Google signin failed. Please try again");
-        return;
+  googleCallback(response) {
+    if (!response || !response.accessToken) {
+      alert("Google signin failed. Please try again");
+      return;
     }
     let user = {
-        token: response.accessToken,
-        name: response.profileObj.name
-    }
+      token: response.accessToken,
+      name: response.profileObj.name
+    };
     localStorage.setItem("user", JSON.stringify(user));
 
-    window.location.href = "/app";         
-
-    
-}
+    window.location.href = "/app";
+  }
   render() {
     return (
       <div>
-        <div className = "container-fluid top">
-           <div className = "row">
-             <div className = "col-md-2">
-                <img className = "logo-landing" src = "logo.png"></img>
-                </div>
-             <div className = "col-md-10">
-             <nav className="nav flex-row nav-landing">
-                    <Link to="/login" className="nav-link text-light pb-4">
-                Login
-                </Link>
-                &emsp; &emsp; &emsp;
-                <Link to="/login" className="nav-link text-light pb-4">
-                Features
-                </Link>
-                &emsp; &emsp; &emsp;
-                <Link to="/login" className="nav-link text-light pb-4">
-                Support
-                </Link>
-                &emsp; &emsp; &emsp;
-                <Link to="/login" className="nav-link text-light pb-4">
-                About us
-                </Link>
-                &emsp; &emsp; &emsp;
-                <Link to="/login" className="nav-link text-light pb-4">
-                Contact Us
-                </Link>
-                &emsp; &emsp; &emsp;
-                <Link to="/login" className="nav-link text-light pb-4">
-                FAQs
-                </Link>
-                  </nav>
+        <div className="container-fluid top">
+          <div className="row">
+            <div className="col-md-2">
+              <img className="logo-landing" src="logo.png" />
             </div>
-           </div>
-                <div className = "row">&nbsp;</div>
-                <div className = "row">&nbsp;</div>
-                <div className = "row">&nbsp;</div>
-                <div className = "row">&nbsp;</div>
-                <div className = "row">&nbsp;</div>
-                <div className = "row">&nbsp;</div>
-                <div className = "row">&nbsp;</div>
-                <div className = "row">&nbsp;</div>
-          <div className = "row">
-            <div className = "col-md-5 offset-md-5">
-            <h2 className = "chart"> Chart App</h2>
-             </div>
+            <div className="col-md-10">
+              <nav className="nav flex-row nav-landing">
+                <Link to="/login" className="nav-link text-light pb-4">
+                  Login
+                </Link>
+                &emsp; &emsp; &emsp;
+                <Link to="/login" className="nav-link text-light pb-4">
+                  Features
+                </Link>
+                &emsp; &emsp; &emsp;
+                <Link to="/login" className="nav-link text-light pb-4">
+                  Support
+                </Link>
+                &emsp; &emsp; &emsp;
+                <Link to="/login" className="nav-link text-light pb-4">
+                  About us
+                </Link>
+                &emsp; &emsp; &emsp;
+                <Link to="/login" className="nav-link text-light pb-4">
+                  Contact Us
+                </Link>
+                &emsp; &emsp; &emsp;
+                <Link to="/login" className="nav-link text-light pb-4">
+                  FAQs
+                </Link>
+              </nav>
+            </div>
+          </div>
+          <div className="row">&nbsp;</div>
+          <div className="row">&nbsp;</div>
+          <div className="row">&nbsp;</div>
+          <div className="row">&nbsp;</div>
+          <div className="row">&nbsp;</div>
+          <div className="row">&nbsp;</div>
+          <div className="row">&nbsp;</div>
+          <div className="row">&nbsp;</div>
+          <div className="row">
+            <div className="col-md-5 offset-md-5">
+              <h2 className="chart"> Chart App</h2>
+            </div>
           </div>
           <div className="row">
             <div className="col-md-7 offset-md-3">
@@ -89,40 +86,62 @@ googleCallback(response){
                 </span>
               </p>
             </div>
-        </div>
-        <div className = "row">
-          <div className = "col-md-7 offset-md-4">
-          <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Try it Once</button>
-        <div id="myModal" class="modal fade" role="dialog">
-          <div class="modal-dialog">          
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3>Login Here</h3>          
-              </div>
-              <div class="modal-body">
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <GoogleLogin 
+          </div>
+          <div className="row">
+            <div className="col-md-7 offset-md-4">
+              <button
+                type="button"
+                class="btn btn-success btn-lg"
+                data-toggle="modal"
+                data-target="#myModal"
+              >
+                Try it Once
+              </button>
+              <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h3>Login Here</h3>
+                    </div>
+                    <div class="modal-body">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <GoogleLogin
                         clientId="253598194229-90kkf0t65d0s0udro8msfpiomls3cpsi.apps.googleusercontent.com"
                         onSuccess={this.googleCallback}
                         onFailure={this.googleCallback}
                         buttonText="Continue with Google"
-                       
-                    />
-                    <br /><br /><br /><br /><br /><br />
-                    <h6>Don't have google Account ? </h6>
-                    <a target="blank" href="https://accounts.google.com/signup/v2/webcreateaccount?continue=https%3A%2F%2Faccounts.google.com%2FManageAccount&gmb=exp&biz=false&flowName=GlifWebSignIn&flowEntry=SignUp"><h6>Create A Google Account</h6></a>
-              </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <h6>Don't have google Account ? </h6>
+                      <a
+                        target="blank"
+                        href="https://accounts.google.com/signup/v2/webcreateaccount?continue=https%3A%2F%2Faccounts.google.com%2FManageAccount&gmb=exp&biz=false&flowName=GlifWebSignIn&flowEntry=SignUp"
+                      >
+                        <h6>Create A Google Account</h6>
+                      </a>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-default"
+                        data-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
                 </div>
+              </div>
+              &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+              <button className="btn btn-primary btn-lg">Demo Chart</button>
             </div>
           </div>
         </div>
-             &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            <button className = "btn btn-primary btn-lg">Demo Chart</button>
-            </div>
-        </div>            
-      </div>    
 
         <div className="container-fluid ">
           <div className="row">
@@ -246,7 +265,6 @@ googleCallback(response){
             </div>
           </div>
         </div>
-
 
         <div className="container-fluid footer">
           <div className="row">

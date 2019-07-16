@@ -21,40 +21,16 @@ class DataRow extends React.Component {
         <InputCell
           onTableUpdate={this.props.onTableUpdate}
           cellData={{
-            type: "a",
-            value: this.props.data.a,
+            type: "name",
+            value: this.props.data.name,
             id: this.props.data.id
           }}
         />
         <InputCell
           onTableUpdate={this.props.onTableUpdate}
           cellData={{
-            type: "b",
-            value: this.props.data.b,
-            id: this.props.data.id
-          }}
-        />
-        <InputCell
-          onTableUpdate={this.props.onTableUpdate}
-          cellData={{
-            type: "c",
-            value: this.props.data.c,
-            id: this.props.data.id
-          }}
-        />
-        <InputCell
-          onTableUpdate={this.props.onTableUpdate}
-          cellData={{
-            type: "d",
-            value: this.props.data.d,
-            id: this.props.data.id
-          }}
-        />
-        <InputCell
-          onTableUpdate={this.props.onTableUpdate}
-          cellData={{
-            type: "e",
-            value: this.props.data.e,
+            type: "y",
+            value: this.props.data.y,
             id: this.props.data.id
           }}
         />

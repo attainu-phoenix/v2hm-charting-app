@@ -9,109 +9,196 @@ class DataComponent extends React.Component {
     super(props);
 
     this.state = {};
-    this.state.datas = [
-      {
-        id: 1,
-        a: "Company",
-        b: "Export %",
-        c: "",
-        d: "",
-        e: ""
+    // this.state.datas = [
+    //   {
+    //     id: 1,
+    //     name: "Coca Cola",
+    //     y: 40
+    //   },
+    //   {
+    //     id: 2,
+    //     name: "Pepsi",
+    //     y: 20
+    //   },
+    //   {
+    //     id: 3,
+    //     name: "Red Bull",
+    //     y: 15
+    //   },
+    //   {
+    //     id: 4,
+    //     name: "Kingfisher",
+    //     y: 10
+    //   },
+    //   {
+    //     id: 5,
+    //     name: "Carlsberg",
+    //     y: 15
+    //   }
+    // ];
+
+    this.state.options = {
+      chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: "pie"
       },
-      {
-        id: 2,
-        a: "Coca Cola",
-        b: 35,
-        c: "",
-        d: "",
-        e: ""
+      title: {
+        text: "Export sales January, 2019"
       },
-      {
-        id: 3,
-        a: "Pepsi",
-        b: 25,
-        c: "",
-        d: "",
-        e: ""
+      tooltip: {
+        pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>"
       },
-      {
-        id: 4,
-        a: "Red Bull",
-        b: 15,
-        c: "",
-        d: "",
-        e: ""
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: "pointer",
+          dataLabels: {
+            enabled: false
+          },
+          showInLegend: true
+        }
       },
-      {
-        id: 5,
-        a: "Kingfisher",
-        b: 10,
-        c: "",
-        d: "",
-        e: ""
-      },
-      {
-        id: 6,
-        a: "Carlsberg",
-        b: 15,
-        c: "",
-        d: "",
-        e: ""
-      }
-    ];
+      series: [
+        {
+          name: "Brands",
+          colorByPoint: true,
+          data: [
+            {
+              id: 1,
+              name: "Coca Cola",
+              y: 40
+            },
+            {
+              id: 2,
+              name: "Pepsi",
+              y: 20
+            },
+            {
+              id: 3,
+              name: "Red Bull",
+              y: 15
+            },
+            {
+              id: 4,
+              name: "Kingfisher",
+              y: 10
+            },
+            {
+              id: 5,
+              name: "Carlsberg",
+              y: 15
+            }
+          ]
+        }
+      ]
+    };
+
+    this.updateChartHandle = this.updateChartHandle.bind(this);
   }
 
   handleAddRow(evt) {
-    var id = Math.floor(Math.random() * 99999);
-    var data = {
+    let id = Math.floor(Math.random() * 99999);
+    let newData = {
       id: id,
-      a: "",
-      b: "",
-      c: "",
-      d: "",
-      e: ""
+      name: "",
+      y: 0
     };
-    this.state.datas.push(data);
-    this.setState(this.state.datas);
+
+    let options = this.state.options;
+    let tableData = this.state.options.series[0].data;
+
+    tableData.push(newData);
+    delete options.series[0];
+    options.series[0] = tableData;
+
+    this.setState({ options: Object.assign({}, options) });
   }
 
   handleRowDel(data) {
-    var index = this.state.datas.indexOf(data);
-    this.state.datas.splice(index, 1);
-    this.setState(this.state.datas);
+    let tableData = this.state.options.series[0].data;
+    let index = tableData.indexOf(data);
+
+    tableData.splice(index, 1);
+    this.setState(tableData);
   }
 
   handleTableUpdate(evt) {
-    var item = {
+    console.log(evt.target.name);
+
+    let item = {
       id: evt.target.id,
       name: evt.target.name,
       value: evt.target.value
     };
-    var datas = this.state.datas.slice();
-    var newData = datas.map(function(data) {
+    let datas = this.state.options.series[0].data.slice();
+    let newData = datas.map(function(data) {
       for (var key in data) {
         if (key == item.name && data.id == item.id) {
-          data[key] = item.value;
+          if (item.name === "y") {
+            data[key] = parseInt(item.value, 10);
+          } else {
+            data[key] = item.value;
+          }
         }
       }
       return data;
     });
-    this.setState({ datas: newData });
+    this.setState({ data: newData });
+  }
 
+  updateChartHandle() {
     this.props.dispatch({
-      type: "UPDATE_TABLE",
-      item
+      type: "UPDATE_CHART",
+      chart_data: this.state.options
     });
   }
 
+  componentWillUnmount() {
+    this.props.dispatch({
+      type: "CLEAR_CHART",
+      chart_data: this.state.options
+    });
+  }
+
+  toLineChart() {}
+
+  toPieChart() {}
+
+  toBarChart() {}
+
+  toAreaChart() {}
+
   render() {
     return (
-      <DataTable
-        onTableUpdate={this.handleTableUpdate.bind(this)}
-        onRowAdd={this.handleAddRow.bind(this)}
-        onRowDel={this.handleRowDel.bind(this)}
-        datas={this.state.datas}
-      />
+      <div>
+        {/* Todo - Dynamic edit functionality for chart name */}
+        <h4 className="mb-5">Chart Name</h4>
+        <DataTable
+          onTableUpdate={this.handleTableUpdate.bind(this)}
+          onRowAdd={this.handleAddRow.bind(this)}
+          onRowDel={this.handleRowDel.bind(this)}
+          datas={this.state.options.series[0].data}
+        />
+        <div className="btn btn-warning mr-3" onClick={this.updateChartHandle}>
+          Update Chart
+        </div>
+        <div className="my-4 text-center">
+          <div className="btn btn-warning mr-3" onClick={this.toLineChart}>
+            Line Chart
+          </div>
+          <div className="btn btn-warning mx-3" onClick={this.toPieChart}>
+            Pie Chart
+          </div>
+          <div className="btn btn-warning mx-3" onClick={this.toBarChart}>
+            Bar Chart
+          </div>
+          <div className="btn btn-warning ml-3" onClick={this.toAreaChart}>
+            Area Chart
+          </div>
+        </div>
+      </div>
     );
   }
 }
