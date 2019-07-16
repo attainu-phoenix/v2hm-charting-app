@@ -15,7 +15,7 @@ class DataTable extends React.Component {
     // console.log("my dataa", this.props.datas);
     let data = this.props.datas;
     if (!data) {
-      console.log("loading");
+      return <div>loading..</div>;
     } else {
       data.map(data => {
         return (
