@@ -23,9 +23,7 @@ function createChart(store, action) {
 }
 
 function getAllCharts(store, action) {
-  let userId = JSON.stringify(action.allcharts);
-
-  let params = encodeURI(`where={"userId": "${userId}"}`);
+  let params = encodeURI(`where={"userId": "${action.allcharts.userId}"}`);
   let url = `http://localhost:1337/parse/classes/charts?${params}`;
 
   fetch(url, {
@@ -36,7 +34,7 @@ function getAllCharts(store, action) {
     .then(result => {
       store.dispatch({
         type: "CHARTS_LOADED",
-        data: result
+        charts: result
       });
       console.log(result);
     })
@@ -44,9 +42,9 @@ function getAllCharts(store, action) {
 }
 
 function getOneChart(store, action) {
-  let chartId = JSON.stringify(action.onechart);
-
-  let url = `http://localhost:1337/parse/classes/charts/${chartId}`;
+  let url = `http://localhost:1337/parse/classes/charts/${
+    action.onechart.chartId
+  }`;
 
   fetch(url, {
     method: "get",
@@ -64,13 +62,14 @@ function getOneChart(store, action) {
 }
 
 function editOneChart(store, action) {
-  let chartId = JSON.stringify(action.editonechart);
-  let url = `http://localhost:1337/parse/classes/charts/${action.newData.id}`;
+  let url = `http://localhost:1337/parse/classes/charts/${
+    action.editonechart.chartId
+  }`;
 
   fetch(url, {
     method: "put",
     headers: HEADERS,
-    body: JSON.stringify(action.newData)
+    body: JSON.stringify(action.updatedData)
   })
     .then(data => data.json())
     .then(result => {
@@ -84,9 +83,9 @@ function editOneChart(store, action) {
 }
 
 function removeChart(store, action) {
-  let chartId = JSON.stringify(action.removeonechart);
-
-  let url = `http://localhost:1337/parse/classes/charts/${chartId}`;
+  let url = `http://localhost:1337/parse/classes/charts/${
+    action.removechart.chartId
+  }`;
 
   fetch(url, {
     method: "delete",
@@ -98,7 +97,7 @@ function removeChart(store, action) {
         type: "CHART_REMOVED",
         chartData: ""
       });
-      console.log();
+      console.log(result);
     })
     .catch(err => console.log(err));
 }
