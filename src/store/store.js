@@ -1,52 +1,82 @@
-import {createStore} from 'redux';
-
-let reducer = function(oldState, action) {
-    let initialState = {
-        isChartLoading: false,
-
-    };
-
-    if(!oldState) { return initialState; }
-
-    let newState = initialState;
-
-    if(action.type == "FETCH_CHART") {
-
-        // fetch("https://dog.ceo/api/breeds/list/all")
-        //     .then(function(response) {
-        //         return response.json();
-        //     })
-        //     .then(function(data) {
-        //         store.dispatch({
-        //             type: "MENU_LOADED",
-        //             data: Object.keys(data.message)
-        //         });
-        //     })
-        //     .catch(function(err){
-        //         console.log(err);
-        //     });
-
-        newState.isChartLoading = true;
-    }
+import {createStore, combineReducers} from 'redux';
+import ChartReducer from './reducers/ChartReducer.js';
+import saveChartsReducer from './reducers/saveChartsReducer.js';
 
 
-    if(action.type == "CHART_LOADED") {
-        newState.breeds = action.data;
-    }
-    return newState;
-}
-
+let reducer = combineReducers({
+    chartData: ChartReducer,
+    charts: saveChartsReducer
+});
 
 let store = createStore(reducer);
 
+store.subscribe(() => {
+    console.log("dispatched ==>", store.getState());
+})
 
-store.subscribe(function(){
-    console.log( store.getState() );
-});
-
-
-function storeMapper(state) {
+function stateMapper(state) {
     return state;
 }
 
-export {store, storeMapper};
+/*store.dispatch({
+    type: "REMOVE_CHART",
+    removechart:({
+        chartId: "AG5EQuyKZP"
+    })
+})*/
+
+
+/*store.dispatch({
+    type: "CREATE_CHART",
+    newData: ({
+        userId: "33sEqWyntO" ,
+        name: "Export sales, Janurary 2019",
+        chartType: "bar",
+        chartData: [
+         {x: 10, y: 35},
+         {x: 11, y: 25},
+         {x: 12, y: 15}
+        ]
+    })
+})*/ 
+
+/*store.dispatch({
+    type: "GET_CHART",
+    onechart:({
+        chartId: "0eG4R8t4xX" 
+    })
+})*/
+
+
+/*store.dispatch({
+    type: "GET_ALL_CHARTS",
+    allcharts:({
+        userId: "33sEqWyntO"
+    })
+})*/
+
+
+
+/*store.dispatch({
+    type: "UPDATE_CHART",
+    editonechart:({
+        chartId: "T5d85d4GcK" 
+    }),
+    updatedData:({
+        userId: "33sEqWyntO",
+        name: "Export sales, Feburary 2019,",
+        chartType: "line",
+        chartData: [
+         {x: 12, y: 35},
+         {x: 14, y: 25},
+         {x: 15, y: 15},
+         {x: 16, y: 10},
+         {x: 17, y: 15}     
+       ]
+   })
+})*/
+
+
+
+
+export {store, stateMapper};
