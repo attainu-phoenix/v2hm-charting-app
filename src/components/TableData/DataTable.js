@@ -13,21 +13,17 @@ class DataTable extends React.Component {
     let onTableUpdate = this.props.onTableUpdate;
     let rowDel = this.props.onRowDel;
     // console.log("my dataa", this.props.datas);
-    let data = this.props.datas;
-    if (!data) {
-      return <div>loading..</div>;
-    } else {
-      data.map(data => {
-        return (
-          <DataRow
-            onTableUpdate={onTableUpdate}
-            data={data}
-            onDelEvent={rowDel.bind(this)}
-            key={data.id}
-          />
-        );
-      });
-    }
+
+    let data = this.props.datas.map(data => {
+      return (
+        <DataRow
+          onTableUpdate={onTableUpdate}
+          data={data}
+          onDelEvent={rowDel.bind(this)}
+          key={data.id}
+        />
+      );
+    });
 
     return (
       <div>
