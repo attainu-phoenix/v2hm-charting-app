@@ -3,124 +3,103 @@ const HEADERS = {
   "Content-Type": "application/json"
 };
 
-function createUser() {
+function createChart(store, action) {
   let url = "http://localhost:1337/parse/classes/charts";
 
   fetch(url, {
     method: "post",
     headers: HEADERS,
-    body: JSON.stringify({
-      username: "mojom2k",
-      password: "mojojojo"
-    })
+    body: JSON.stringify(action.newData)
   })
     .then(data => data.json())
-    .then(json => {
-      console.log(json);
+    .then(result => {
+      store.dispatch({
+        type: "CHART_CREATED",
+        chartData: result
+      });
+      console.log(result);
     })
     .catch(err => console.log(err));
 }
 
-createUser();
+function getAllCharts(store, action) {
+  let params = encodeURI(`where={"userId": "${action.allcharts.userId}"}`);
+  let url = `http://localhost:1337/parse/classes/charts?${params}`;
 
-// function createChart(store, action) {
-//   let url = "http://localhost:1337/parse/classes/charts";
+  fetch(url, {
+    method: "get",
+    headers: HEADERS
+  })
+    .then(data => data.json())
+    .then(result => {
+      store.dispatch({
+        type: "CHARTS_LOADED",
+        charts: result
+      });
+      console.log(result);
+    })
+    .catch(err => console.log(err));
+}
 
-//   fetch(url, {
-//     method: "post",
-//     headers: HEADERS,
-//     body: JSON.stringify(action.newData)
-//   })
-//     .then(data => data.json())
-//     .then(result => {
-//       store.dispatch({
-//         type: "CHART_CREATED",
-//         chartData: result
-//       });
-//       console.log(result);
-//     })
-//     .catch(err => console.log(err));
-// }
+function getOneChart(store, action) {
+  let url = `http://localhost:1337/parse/classes/charts/${
+    action.onechart.chartId
+  }`;
 
-// function getAllCharts(store, action) {
-//   let userId = JSON.stringify(action.allcharts);
+  fetch(url, {
+    method: "get",
+    headers: HEADERS
+  })
+    .then(data => data.json())
+    .then(result => {
+      store.dispatch({
+        type: "CHART_LOADED",
+        chartData: result
+      });
+      console.log(result);
+    })
+    .catch(err => console.log(err));
+}
 
-//   let params = encodeURI(`where={"userId": "${userId}"}`);
-//   let url = `http://localhost:1337/parse/classes/charts?${params}`;
+function editOneChart(store, action) {
+  let url = `http://localhost:1337/parse/classes/charts/${
+    action.editonechart.chartId
+  }`;
 
-//   fetch(url, {
-//     method: "get",
-//     headers: HEADERS
-//   })
-//     .then(data => data.json())
-//     .then(result => {
-//       store.dispatch({
-//         type: "CHARTS_LOADED",
-//         data: result
-//       });
-//       console.log(result);
-//     })
-//     .catch(err => console.log(err));
-// }
+  fetch(url, {
+    method: "put",
+    headers: HEADERS,
+    body: JSON.stringify(action.updatedData)
+  })
+    .then(data => data.json())
+    .then(result => {
+      store.dispatch({
+        type: "CHART_UPDATED",
+        chartData: result
+      });
+      console.log(result);
+    })
+    .catch(err => console.log(err));
+}
 
-// function getOneChart(store, action) {
-//   let chartId = JSON.stringify(action.onechart);
+function removeChart(store, action) {
+  let url = `http://localhost:1337/parse/classes/charts/${
+    action.removechart.chartId
+  }`;
 
-//   let url = `http://localhost:1337/parse/classes/charts/${chartId}`;
+  fetch(url, {
+    method: "delete",
+    headers: HEADERS
+  })
+    .then(data => data.json())
+    .then(result => {
+      store.dispatch({
+        type: "CHART_REMOVED",
+        chartData: ""
+      });
+      console.log(result);
+    })
+    .catch(err => console.log(err));
+}
 
-//   fetch(url, {
-//     method: "get",
-//     headers: HEADERS
-//   })
-//     .then(data => data.json())
-//     .then(result => {
-//       store.dispatch({
-//         type: "CHART_LOADED",
-//         chartData: result
-//       });
-//       console.log(result);
-//     })
-//     .catch(err => console.log(err));
-// }
-
-// function editOneChart(store, action) {
-//   let chartId = JSON.stringify(action.editonechart);
-//   let url = `http://localhost:1337/parse/classes/charts/${action.newData.id}`;
-
-//   fetch(url, {
-//     method: "put",
-//     headers: HEADERS,
-//     body: JSON.stringify(action.newData)
-//   })
-//     .then(data => data.json())
-//     .then(result => {
-//       store.dispatch({
-//         type: "CHART_UPDATED",
-//         chartData: result
-//       });
-//       console.log(result);
-//     })
-//     .catch(err => console.log(err));
-// }
-
-// function removeChart(store, action) {
-//   let chartId = JSON.stringify(action.removeonechart);
-
-//   let url = `http://localhost:1337/parse/classes/charts/${chartId}`;
-
-//   fetch(url, {
-//     method: "delete",
-//     headers: HEADERS
-//   })
-//     .then(data => data.json())
-//     .then(result => {
-//       store.dispatch({
-//         type: "CHART_REMOVED",
-//         chartData: ""
-//       });
-//       console.log();
-//     })
-//     .catch(err => console.log(err));
-// }
-
-// export { createChart, getAllCharts, getOneChart, editOneChart, removeChart };
+export { createChart, getAllCharts, getOneChart, editOneChart, removeChart };

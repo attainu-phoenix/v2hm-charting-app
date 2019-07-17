@@ -1,37 +1,44 @@
-import {createChart,getOneChart,editOneChart,removeChart} from '../api/api.js';
-import {store} from '../store.js';
+import {
+  createChart,
+  getOneChart,
+  editOneChart,
+  removeChart
+} from "../api/api.js";
+import { store } from "../store.js";
 
 function ChartReducer(chartData = [], action) {
+  if (action.type === "REMOVE_CHART") {
+    removeChart(store, action);
+  }
 
-    if (action.type === "REMOVE_CHARTS"){
-        removeChart(store,action)
-        return [];
-    }
-    
-    if (action.type === "CREATE_CHART"){
+  if (action.type === "CHART_REMOVED") {
+    return [];
+  }
 
-        createChart(store, action);
-        return chartData;
-    }
+  if (action.type === "CREATE_CHART") {
+    createChart(store, action);
+  }
 
-    if (action.type === "CHART_CREATED") {
+  if (action.type === "CHART_CREATED") {
+    return action.chartData;
+  }
 
-        return action.charData;
-    }
+  if (action.type === "UPDATE_CHART") {
+    editOneChart(store, action);
+  }
 
-    if (action.type === "UPDATE_CHART"){
+  if (action.type === "CHART_UPDATED") {
+    return action.chartData;
+  }
 
-        editOneChart(store, action);
-        return chartData;
-    }
+  if (action.type === "GET_CHART") {
+    getOneChart(store, action);
+  }
+  if (action.type === "CHART_LOADED") {
+    return action.chartData;
+  }
 
-    if (action.type === "GET_CHART") {
-
-        getOneChart(store, action);
-        return chartData;
-    }
-
-        return chartData;
+  return chartData;
 }
 
 export default ChartReducer;

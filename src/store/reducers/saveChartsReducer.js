@@ -1,13 +1,16 @@
-import {getAllCharts} from '../api/api.js';
-import {store} from '../store.js';
+import { getAllCharts } from "../api/api.js";
+import { store } from "../store.js";
 
-function saveChartsReducer(saveCharts = [], action) {
-
-if (action.type === "GET_ALL_CHARTS") {
-
+function saveChartsReducer(charts = [], action) {
+  if (action.type === "GET_ALL_CHARTS") {
     getAllCharts(store, action);
-    return saveCharts;
-    }
+  }
+
+  if (action.type === "CHARTS_LOADED") {
+    return action.charts;
+  }
+
+  return charts;
 }
 
 export default saveChartsReducer;
