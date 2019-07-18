@@ -11,6 +11,7 @@ class Login extends React.Component {
 }
 
 googleCallback(response){
+    localStorage.setItem("testing", JSON.stringify(response))
     if(!response || !response.accessToken){
         alert("Google signin failed. Please try again");
         return;
@@ -19,7 +20,8 @@ googleCallback(response){
         token: response.accessToken,
         name: response.profileObj.name,
         imageUrl: response.profileObj.imageUrl,
-        email: response.profileObj.email
+        email: response.profileObj.email,
+        userId: response.profileObj.googleId
 
     }
     localStorage.setItem("user", JSON.stringify(user));
@@ -28,6 +30,7 @@ googleCallback(response){
 
     
 }
+
 
 render(){
     return(
