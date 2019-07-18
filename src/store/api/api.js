@@ -15,6 +15,7 @@ const HEADERS = {
        .then(result => {
            store.dispatch({
                type:"CHART_CREATED",
+               
                chartData:result
            })
            console.log(result);
@@ -63,7 +64,7 @@ const HEADERS = {
    
    function editOneChart(store,action) {
        
-       let url = `http://localhost:1337/parse/classes/charts/${action.editonechart.chartId}`;
+       let url = `http://localhost:1337/parse/classes/charts/${action.updatedData.chartId}`;
        
        fetch(url, {
            method: "put",

@@ -1,6 +1,8 @@
 import {createStore, combineReducers} from 'redux';
 import ChartReducer from './reducers/ChartReducer.js';
 import saveChartsReducer from './reducers/saveChartsReducer.js';
+//import {getUserAccess} from "../store/api/index.js";
+
 
 
 let reducer = combineReducers({
@@ -18,18 +20,29 @@ function stateMapper(state) {
     return state;
 }
 
-/*store.dispatch({
+/*The code below is has variable definition and store dispatches used strictly for testing purpose only please follow the important instructions for testing: 
+1. Before doing npm start ensure that all this code is commented out
+2. Once you sucessfully login and app is loaded i.e.  http://localhost:3000/app for most of the systems then remove the // from below 2 variable declarations,and import {getUserAccess} defined above and any one store.dispatch which you want to test
+3.You are free to login and logout as many times as you want as no need for commenting out full thing long as you do not terminate by pressing ctrl C   
+ */
+
+    //let user = getUserAccess();
+
+    //let userId = user.userId;
+
+/*store.dispatch({                              //Chart with given chartId removed now 5 charts left with gmail
     type: "REMOVE_CHART",
     removechart:({
-        chartId: "AG5EQuyKZP"
+        userId: userId,
+        chartId: "bEbnAxbumF"
     })
 })*/
 
 
-/*store.dispatch({
+/*store.dispatch({                              //Chart with object Id D2Vu765LjL Generated
     type: "CREATE_CHART",
     newData: ({
-        userId: "33sEqWyntO" ,
+        userId: userId,
         name: "Export sales, Janurary 2019",
         chartType: "bar",
         chartData: [
@@ -38,20 +51,21 @@ function stateMapper(state) {
          {x: 12, y: 15}
         ]
     })
-})*/ 
+})*/
 
 /*store.dispatch({
-    type: "GET_CHART",
+    type: "GET_CHART",                       //was able to get required chart
     onechart:({
-        chartId: "0eG4R8t4xX" 
+        userId: userId,
+        chartId: "bEbnAxbumF" 
     })
 })*/
 
 
-/*store.dispatch({
+/*store.dispatch({                                         //Before remove have 6 charts with this userId
     type: "GET_ALL_CHARTS",
     allcharts:({
-        userId: "33sEqWyntO"
+        userId: userId
     })
 })*/
 
@@ -59,13 +73,14 @@ function stateMapper(state) {
 
 /*store.dispatch({
     type: "UPDATE_CHART",
-    editonechart:({
-        chartId: "T5d85d4GcK" 
-    }),
-    updatedData:({
-        userId: "33sEqWyntO",
-        name: "Export sales, Feburary 2019,",
-        chartType: "line",
+    //editonechart:({
+       // chartId: "D2Vu765LjL" 
+    //}),
+    updatedData:({                                      //chart with Id D2Vu765LjL modified
+        userId: userId,
+        chartId: "D2Vu765LjL",
+        name: "Export sales, July 2019,",
+        chartType: "pie",
         chartData: [
          {x: 12, y: 35},
          {x: 14, y: 25},
@@ -75,8 +90,6 @@ function stateMapper(state) {
        ]
    })
 })*/
-
-
 
 
 export {store, stateMapper};
