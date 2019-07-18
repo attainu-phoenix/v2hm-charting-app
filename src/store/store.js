@@ -1,7 +1,7 @@
 import {createStore, combineReducers} from 'redux';
 import ChartReducer from './reducers/ChartReducer.js';
 import saveChartsReducer from './reducers/saveChartsReducer.js';
-import {getUserAccess} from "../store/api/index.js";
+//import {getUserAccess} from "../store/api/index.js";
 
 
 
@@ -22,7 +22,7 @@ function stateMapper(state) {
 
 /*The code below is has variable definition and store dispatches used strictly for testing purpose only please follow the important instructions for testing: 
 1. Before doing npm start ensure that all this code is commented out
-2. Once you sucessfully login and app is loaded i.e.  http://localhost:3000/app for most of the systems then remove the // from below 2 variable declarations and any one store.dispatch which you want to test
+2. Once you sucessfully login and app is loaded i.e.  http://localhost:3000/app for most of the systems then remove the // from below 2 variable declarations,and import {getUserAccess} defined above and any one store.dispatch which you want to test
 3.You are free to login and logout as many times as you want as no need for commenting out full thing long as you do not terminate by pressing ctrl C   
  */
 
