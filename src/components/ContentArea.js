@@ -45,7 +45,7 @@ class ContentArea extends React.Component {
           <Route path="/app/dashboard" component={Dashboard} />
           <Route path="/app/data-type" component={DataType} />
           <Route path="/app/upload-csv" component={CSVFileUploader} />
-          <Route path="/app/chart/123" component={ChartData} />
+          <Route path="/app/chart/:chartId" component={ChartData} />
           <Route path="/app/profile" component={Profile} />
           <Route path="/app/logout" component={Logout} />
         </div>

@@ -1,4 +1,4 @@
-function updateChartReducer(oldState, action) {
+function updateChartDataReducer(oldState, action) {
   let initialState = {
     data: {}
   };
@@ -11,17 +11,17 @@ function updateChartReducer(oldState, action) {
 
   newState.data = oldState.data;
 
-  if (action.type === "UPDATE_CHART") {
+  if (action.type === "UPDATE_CHART_DATA") {
     console.log(action.chart_data);
     newState.data = action.chart_data;
     console.log(newState);
   }
 
-  if (action.type === "CLEAR_CHART") {
+  if (action.type === "CLEAR_CHART_DATA") {
     return {};
   }
 
   return newState;
 }
 
-export default updateChartReducer;
+export default updateChartDataReducer;

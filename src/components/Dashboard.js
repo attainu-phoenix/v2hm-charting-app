@@ -1,8 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { stateMapper } from "../store/store";
 
-class Dashboard extends React.Component {
+class DashboardComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.deleteChartHandle = this.deleteChartHandle.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.dispatch({
+      type: "GET_ALL_CHARTS",
+      allcharts: {
+        userId: "33sEqWyntO"
+      }
+    });
+  }
+
+  deleteChartHandle() {
+    this.props.dispatch({
+      type: "REMOVE_CHART",
+      removechart: {
+        chartId: this.props.charts.results.objectId
+      }
+    });
+  }
+
   render() {
+    console.log("props in dashboard", this.props.charts.results);
+
     return (
       <div className="container">
         <div>CREATE NEW CHART</div>
@@ -18,106 +45,43 @@ class Dashboard extends React.Component {
           </div>
         </Link>
         <br />
-        <br />
-        <br />
 
         <div>SAVED CHARTS</div>
-        <br />
+        <div className="row">
+          {this.props.charts.results &&
+            this.props.charts.results.map(c => {
+              return (
+                <div
+                  className="card bg-secondary mt-3 mb-2 mx-2"
+                  style={{
+                    width: 180,
+                    height: 180
+                  }}
+                >
+                  <button chartId={c.objectId}
+                    className="btn btn-danger btn-small"
+                    onClick={this.deleteChartHandle}
+                  >
+                    delete
+                  </button>
+                  <Link to={`/app/chart/${c.objectId}`}>
+                    <div className="card-body text-white">
+                      <small>
+                        {c.name} Chart type - {c.chartType}
+                      </small>
 
-        <div
-          className="card bg-secondary"
-          style={{ width: 180, height: 150, float: "left", marginBottom: 10 }}
-        >
-          <div className="card-body" />
-        </div>
-
-        <div
-          className="card bg-secondary"
-          style={{
-            width: 180,
-            height: 150,
-            float: "left",
-            marginLeft: 20,
-            marginBottom: 10
-          }}
-        >
-          <div className="card-body" />
-        </div>
-
-        <div
-          className="card bg-secondary"
-          style={{
-            width: 180,
-            height: 150,
-            float: "left",
-            marginLeft: 20,
-            marginBottom: 10
-          }}
-        >
-          <div className="card-body" />
-        </div>
-        <div
-          className="card bg-secondary"
-          style={{
-            width: 180,
-            height: 150,
-            float: "left",
-            marginLeft: 20,
-            marginBottom: 10
-          }}
-        >
-          <div className="card-body" />
-        </div>
-
-        <div
-          className="card bg-secondary"
-          style={{
-            width: 180,
-            height: 150,
-            float: "left",
-            marginLeft: 20,
-            marginBottom: 10
-          }}
-        >
-          <div className="card-body" />
-        </div>
-
-        <div
-          className="card bg-secondary"
-          style={{ width: 180, height: 150, float: "left" }}
-        >
-          <div className="card-body" />
-        </div>
-
-        <div
-          className="card bg-secondary"
-          style={{ width: 180, height: 150, float: "left", marginLeft: 20 }}
-        >
-          <div className="card-body" />
-        </div>
-
-        <div
-          className="card bg-secondary"
-          style={{ width: 180, height: 150, float: "left", marginLeft: 20 }}
-        >
-          <div className="card-body" />
-        </div>
-        <div
-          className="card bg-secondary"
-          style={{ width: 180, height: 150, float: "left", marginLeft: 20 }}
-        >
-          <div className="card-body" />
-        </div>
-
-        <div
-          className="card bg-secondary"
-          style={{ width: 180, height: 150, float: "left", marginLeft: 20 }}
-        >
-          <div className="card-body" />
+                      <small>{c.updatedAt}</small>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
         </div>
       </div>
     );
   }
 }
+
+let Dashboard = connect(stateMapper)(DashboardComponent);
 
 export default Dashboard;

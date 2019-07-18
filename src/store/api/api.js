@@ -36,7 +36,7 @@ function getAllCharts(store, action) {
         type: "CHARTS_LOADED",
         charts: result
       });
-      console.log(result);
+      console.log("inside api", result);
     })
     .catch(err => console.log(err));
 }

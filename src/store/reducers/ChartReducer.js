@@ -8,6 +8,8 @@ import { store } from "../store.js";
 
 function ChartReducer(chartData = [], action) {
   if (action.type === "REMOVE_CHART") {
+    console.log("reducer remove chart", action.removechart.chartId);
+
     removeChart(store, action);
   }
 
@@ -34,6 +36,7 @@ function ChartReducer(chartData = [], action) {
   if (action.type === "GET_CHART") {
     getOneChart(store, action);
   }
+
   if (action.type === "CHART_LOADED") {
     return action.chartData;
   }

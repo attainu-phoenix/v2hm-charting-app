@@ -13,6 +13,7 @@ class DataTable extends React.Component {
     let onTableUpdate = this.props.onTableUpdate;
     let rowDel = this.props.onRowDel;
     // console.log("my dataa", this.props.datas);
+    // let data = this.props.datas;
 
     let data = this.props.datas.map(data => {
       return (
