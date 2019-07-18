@@ -1,8 +1,11 @@
 import React from "react";
 import Data from "./TableData/Data";
 import ReactDOM from "react-dom";
-
+import Highcharts from 'highcharts';
 import ChartComponent from './ChartComponent.js';
+
+require('highcharts/modules/exporting')(Highcharts);
+
 
 class ChartData extends React.Component {
   constructor(props) {
@@ -13,47 +16,33 @@ class ChartData extends React.Component {
     this.areaButton = this.areaButton.bind(this);
     this.pieButton = this.pieButton.bind(this);
 
-
     this.state = {
       type: "line"
     }
-
-
   }
 
   lineButton(){
     this.setState({
       type: "line"
     });      
-
   }
 
-
   barButton(){
-    console.log("bar button clicked");
-
     this.setState({
       type: "bar"
     });      
-
   }
 
   areaButton(){
-    console.log("area button clicked");
-
     this.setState({
-      type: "column"
+      type: "areaspline"
     });      
-
   }
 
   pieButton(){
-    console.log("pie button clicked");
-
     this.setState({
       type: "pie"
     });      
-
   }
 
   render() {
@@ -121,7 +110,7 @@ class ChartData extends React.Component {
           <div className="my-4 text-center">
               <button onClick={this.lineButton} className="btn btn-primary mr-3">Line Chart</button>
               <button onClick={this.barButton} className="btn btn-primary mr-3">Bar Chart</button>
-              <button onClick={this.areaButton} className="btn btn-primary mr-3">Column Chart</button>
+              <button onClick={this.areaButton} className="btn btn-primary mr-3">Area Chart</button>
               <button onClick={this.pieButton} className="btn btn-primary mr-3">Pie Chart</button>
 
           </div>
@@ -132,9 +121,10 @@ class ChartData extends React.Component {
             <button className="btn btn-primary mx-3">Save Chart</button>
             <button className="btn btn-primary ml-3">Reset Fields</button>
           </div>
-          <div className="my-4">
+          <div id="container" className="my-4">
          
           <ChartComponent options={this.options} />
+
 
           </div>
         </div>
