@@ -56,18 +56,18 @@ function getOneChart(store, action) {
 }
 
 function editOneChart(store, action) {
-  let url = `http://localhost:1337/parse/classes/charts/${action.chartId}`;
+  let url = `http://localhost:1337/parse/classes/charts/${action.chartData.objectId}`;
 
   fetch(url, {
     method: "put",
     headers: HEADERS,
-    body: JSON.stringify(action.updatedData)
+    body: JSON.stringify(action.chartData)
   })
     .then(data => data.json())
     .then(result => {
       store.dispatch({
-        type: "CHART_UPDATED",
-        updatedChartData: result
+        type: "CHART_EDITED",
+        editedChartData: result
       });
     })
     .catch(err => console.log(err));

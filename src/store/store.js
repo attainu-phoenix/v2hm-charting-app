@@ -43,10 +43,20 @@ export { store, stateMapper };
 
 
 // Clear the current chart and fetch a single chart
-store.dispatch({
-    type: "CLEAR_CHART"
-});
-store.dispatch({
-    type: "GET_ONE_CHART",
-    chartId : "9BMFJ1GXMq"
-});
+// store.dispatch({
+//     type: "CLEAR_CHART"
+// });
+// store.dispatch({
+//     type: "GET_ONE_CHART",
+//     chartId : "9BMFJ1GXMq"
+// });
+
+
+// Edit a chart item
+// store.dispatch({
+//     type: "EDIT_CHART",
+//     chartData : {
+//         objectId: "9BMFJ1GXMq",
+//         name: "Hello World " + new Date()
+//     }
+// });
