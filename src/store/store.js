@@ -36,10 +36,10 @@ export { store, stateMapper };
 // })
 
 // // Fetch currently loaded user's charts
-// store.dispatch({
-//     type: "FETCH_CHARTS",
-//     userId : "123"
-// })
+store.dispatch({
+    type: "FETCH_CHARTS",
+    userId : "123"
+})
 
 
 // Clear the current chart and fetch a single chart
@@ -59,4 +59,11 @@ export { store, stateMapper };
 //         objectId: "9BMFJ1GXMq",
 //         name: "Hello World " + new Date()
 //     }
+// });
+
+
+// Remove a chart item
+// store.dispatch({
+//     type: "REMOVE_CHART",
+//     chartId: "9BMFJ1GXMq"
 // });

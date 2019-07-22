@@ -31,6 +31,14 @@ function chartReducer(chart={}, action) {
         return action.editedChartData;
     }
 
+    if(action.type === "REMOVE_CHART") {
+        removeChart(store, action);
+    }
+
+    if(action.type === "CHART_REMOVED") {
+        return {};
+    }
+
     if(action.type === "CLEAR_CHART") {
         return {};
     }
