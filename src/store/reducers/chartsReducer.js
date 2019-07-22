@@ -12,6 +12,10 @@ function chartsReducer(charts=[], action) {
         return action.charts;
     }
 
+    if(action.type === "CLEAR_LOADED") {
+        return [];
+    }
+
     return charts;
 }
 
