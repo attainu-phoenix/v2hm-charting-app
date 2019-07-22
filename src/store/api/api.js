@@ -9,21 +9,20 @@ function createChart(store, action) {
   fetch(url, {
     method: "post",
     headers: HEADERS,
-    body: JSON.stringify(action.newData)
+    body: JSON.stringify(action.newChartData)
   })
     .then(data => data.json())
     .then(result => {
       store.dispatch({
         type: "CHART_CREATED",
-        chartData: result
+        newChartData: result
       });
-      console.log(result);
     })
     .catch(err => console.log(err));
 }
 
 function getAllCharts(store, action) {
-  let params = encodeURI(`where={"userId": "${action.allcharts.userId}"}`);
+  let params = encodeURI(`where={"userId": "${action.userId}"}`);
   let url = `http://localhost:1337/parse/classes/charts?${params}`;
 
   fetch(url, {
@@ -36,16 +35,12 @@ function getAllCharts(store, action) {
         type: "CHARTS_LOADED",
         charts: result
       });
-      console.log("inside api", result);
     })
     .catch(err => console.log(err));
 }
 
 function getOneChart(store, action) {
-  let url = `http://localhost:1337/parse/classes/charts/${
-    action.onechart.chartId
-  }`;
-
+  let url = `http://localhost:1337/parse/classes/charts/${action.chartId}`;
   fetch(url, {
     method: "get",
     headers: HEADERS
@@ -53,18 +48,15 @@ function getOneChart(store, action) {
     .then(data => data.json())
     .then(result => {
       store.dispatch({
-        type: "CHART_LOADED",
-        chartData: result
+        type: "ONE_CHART_LOADED",
+        oneChartData: result
       });
-      console.log(result);
     })
     .catch(err => console.log(err));
 }
 
 function editOneChart(store, action) {
-  let url = `http://localhost:1337/parse/classes/charts/${
-    action.editonechart.chartId
-  }`;
+  let url = `http://localhost:1337/parse/classes/charts/${action.chartId}`;
 
   fetch(url, {
     method: "put",
@@ -75,17 +67,14 @@ function editOneChart(store, action) {
     .then(result => {
       store.dispatch({
         type: "CHART_UPDATED",
-        chartData: result
+        updatedChartData: result
       });
-      console.log(result);
     })
     .catch(err => console.log(err));
 }
 
 function removeChart(store, action) {
-  let url = `http://localhost:1337/parse/classes/charts/${
-    action.removechart.chartId
-  }`;
+  let url = `http://localhost:1337/parse/classes/charts/${action.chartId}`;
 
   fetch(url, {
     method: "delete",
@@ -94,10 +83,8 @@ function removeChart(store, action) {
     .then(data => data.json())
     .then(result => {
       store.dispatch({
-        type: "CHART_REMOVED",
-        chartData: ""
+        type: "CHART_REMOVED"
       });
-      console.log(result);
     })
     .catch(err => console.log(err));
 }
