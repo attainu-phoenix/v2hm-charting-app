@@ -24,17 +24,29 @@ export { store, stateMapper };
 
 
 // Reducer examples
-store.dispatch({
-    type: "CREATE_CHART",
-    newChartData: {
-        userId : "123",
-        name: "Hello World",
-        data: []
-    }
-})
 
-// Fetch currently loaded user's charts
+// // Create a chart
+// store.dispatch({
+//     type: "CREATE_CHART",
+//     newChartData: {
+//         userId : "123",
+//         name: "Hello World",
+//         data: []
+//     }
+// })
+
+// // Fetch currently loaded user's charts
+// store.dispatch({
+//     type: "FETCH_CHARTS",
+//     userId : "123"
+// })
+
+
+// Clear the current chart and fetch a single chart
 store.dispatch({
-    type: "FETCH_CHARTS",
-    userId : "123"
-})
+    type: "CLEAR_CHART"
+});
+store.dispatch({
+    type: "GET_ONE_CHART",
+    chartId : "9BMFJ1GXMq"
+});
