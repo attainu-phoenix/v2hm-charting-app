@@ -33,7 +33,7 @@ function getAllCharts(store, action) {
     .then(result => {
       store.dispatch({
         type: "CHARTS_LOADED",
-        charts: result
+        charts: result.results
       });
     })
     .catch(err => console.log(err));
