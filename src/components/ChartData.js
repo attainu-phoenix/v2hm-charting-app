@@ -13,22 +13,19 @@ class ChartDataComponent extends React.Component {
     this.saveChartHandle = this.saveChartHandle.bind(this);
   }
 
-  componentDidMount() {
-    this.props.dispatch({
-      type: "GET_CHART",
-      chartId: this.props.chartData.objectId
-    });
-  }
+  // componentDidMount() {
+  //   this.props.dispatch({
+  //     type: "GET_CHART",
+  //     chartId: this.props.chartData.objectId
+  //   });
+  // }
 
   saveChartHandle() {
     this.props.dispatch({
-      type: "UPDATE_CHART",
-      editonechart: {
-        chartId: "sGBQp8eXeK"
-      },
-      updatedData: {
-        userId: "33sEqWyntO",
-        name: "Export sales, Feburary 2019,",
+      type: "EDIT_CHART",
+      chartData: {
+        objectId: "kB2fz1EgPm",
+        name: "Hello World",
         chartType: "bar",
         chartData: [
           { x: 12, y: 35 },
@@ -39,10 +36,30 @@ class ChartDataComponent extends React.Component {
         ]
       }
     });
+
+    // this.props.dispatch({
+    //   type: "EDIT_CHART",
+    //   editonechart: {
+    //     chartId: "sGBQp8eXeK"
+    //   },
+    //   updatedData: {
+    //     userId: "33sEqWyntO",
+    //     name: "Export sales, Feburary 2019,",
+    //     chartType: "bar",
+    //     chartData: [
+    //       { x: 12, y: 35 },
+    //       { x: 14, y: 25 },
+    //       { x: 15, y: 15 },
+    //       { x: 16, y: 10 },
+    //       { x: 17, y: 15 }
+    //     ]
+    //   }
+    // });
   }
 
   render() {
-    // console.log("inside chartdatatable comp", this.props.chartData.objectId);
+    // console.log("inside chartdatatable comp", this.props.newChartData);
+
     return (
       <div className="row">
         <div className="col-md-6">

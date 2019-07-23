@@ -56,7 +56,9 @@ function getOneChart(store, action) {
 }
 
 function editOneChart(store, action) {
-  let url = `http://localhost:1337/parse/classes/charts/${action.chartData.objectId}`;
+  let url = `http://localhost:1337/parse/classes/charts/${
+    action.chartData.objectId
+  }`;
 
   fetch(url, {
     method: "put",

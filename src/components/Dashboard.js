@@ -6,29 +6,27 @@ import { stateMapper } from "../store/store";
 class DashboardComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.deleteChartHandle = this.deleteChartHandle.bind(this);
+    // this.deleteChartHandle = this.deleteChartHandle.bind(this);
   }
 
   componentDidMount() {
     this.props.dispatch({
-      type: "GET_ALL_CHARTS",
-      allcharts: {
-        userId: "33sEqWyntO"
-      }
+      type: "FETCH_CHARTS",
+      userId: "33sEqWyntO"
     });
   }
 
-  deleteChartHandle() {
-    this.props.dispatch({
-      type: "REMOVE_CHART",
-      removechart: {
-        chartId: this.props.charts.results.objectId
-      }
-    });
-  }
+  // deleteChartHandle() {
+  //   this.props.dispatch({
+  //     type: "REMOVE_CHART",
+  //     removechart: {
+  //       chartId: this.props.charts.results.objectId
+  //     }
+  //   });
+  // }
 
   render() {
-    console.log("props in dashboard", this.props.charts.results);
+    console.log("props in dashboard", this.props.charts);
 
     return (
       <div className="container">
@@ -48,8 +46,8 @@ class DashboardComponent extends React.Component {
 
         <div>SAVED CHARTS</div>
         <div className="row">
-          {this.props.charts.results &&
-            this.props.charts.results.map(c => {
+          {this.props.charts &&
+            this.props.charts.map(c => {
               return (
                 <div
                   className="card bg-secondary mt-3 mb-2 mx-2"
@@ -58,12 +56,13 @@ class DashboardComponent extends React.Component {
                     height: 180
                   }}
                 >
-                  <button chartId={c.objectId}
+                  {/* <button
+                    chartId={c.objectId}
                     className="btn btn-danger btn-small"
                     onClick={this.deleteChartHandle}
                   >
                     delete
-                  </button>
+                  </button> */}
                   <Link to={`/app/chart/${c.objectId}`}>
                     <div className="card-body text-white">
                       <small>

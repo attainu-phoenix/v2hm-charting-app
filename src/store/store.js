@@ -1,10 +1,12 @@
 import { createStore, combineReducers } from "redux";
 import chartsReducer from "./reducers/chartsReducer.js";
 import chartReducer from "./reducers/chartReducer.js";
+import updateChartReducer from "./reducers/updateChartReducer.js";
 
 let reducer = combineReducers({
+  chart: chartReducer,
   charts: chartsReducer,
-  chart: chartReducer
+  updateChart: updateChartReducer
 });
 let store = createStore(reducer);
 
@@ -33,7 +35,7 @@ export { store, stateMapper };
 // // Fetch currently loaded user's charts
 // store.dispatch({
 //   type: "FETCH_CHARTS",
-//   userId: "123"
+//   userId: "33sEqWyntO"
 // });
 
 // Clear the current chart and fetch a single chart
@@ -59,3 +61,31 @@ export { store, stateMapper };
 //     type: "REMOVE_CHART",
 //     chartId: "9BMFJ1GXMq"
 // });
+
+// function updateChartReducer(oldState, action) {
+//   let initialState = {
+//     data: {}
+//   };
+
+//   if (!oldState) {
+//     return initialState;
+//   }
+
+//   let newState = initialState;
+
+//   newState.data = oldState.data;
+
+//   if (action.type === "UPDATE_CHART") {
+//     console.log(action.chart_data);
+//     newState.data = action.chart_data;
+//     console.log(newState);
+//   }
+
+//   if (action.type === "CLEAR_CHART") {
+//     return {};
+//   }
+
+//   return newState;
+// }
+
+// export default updateChartReducer;

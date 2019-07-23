@@ -10,12 +10,19 @@ class DataTypeComponent extends React.Component {
     this.createChartHandle = this.createChartHandle.bind(this);
   }
 
+  componentDidMount() {
+    this.props.dispatch({
+      type: "CLEAR_CHART"
+    });
+  }
   createChartHandle() {
+    let newChartId = Math.floor(Math.random() * 99999);
+
     this.props.dispatch({
       type: "CREATE_CHART",
-      newData: {
+      newChartData: {
         userId: "33sEqWyntO",
-        name: "Export sales, Janurary 2019",
+        name: "New Chart " + newChartId,
         chartType: "line",
         chartData: [{ x: 10, y: 35 }, { x: 11, y: 25 }, { x: 12, y: 15 }]
       }
@@ -23,12 +30,9 @@ class DataTypeComponent extends React.Component {
   }
 
   render() {
-    // if (this.props.charts.results) {
-    //   return (
-    //     <Redirect to={`/app/chart/${this.props.charts.results.objectId}`} />
-    //   );
-    // }
-    // console.log("datatype inside", this.props.chartData.objectId);
+    if (this.props.chart && this.props.chart.objectId) {
+      return <Redirect to={`/app/chart/${this.props.chart.objectId}`} />;
+    }
 
     return (
       <div className="container">
@@ -40,15 +44,13 @@ class DataTypeComponent extends React.Component {
         <br />
 
         {/* <Link to={`/app/chart/${this.props.charts.objectId}`}> */}
-        <Link to={`/app/chart/123`}>
-          <div
-            className="card bg-info text-white"
-            style={{ width: 180, height: 140, float: "left" }}
-            onClick={this.createChartHandle}
-          >
-            <div className="card-body">Input Data</div>
-          </div>
-        </Link>
+        <div
+          className="card bg-info text-white"
+          style={{ width: 180, height: 140, float: "left" }}
+          onClick={this.createChartHandle}
+        >
+          <div className="card-body">Input Data</div>
+        </div>
 
         <Link to="/app/upload-csv">
           <div
