@@ -22,6 +22,25 @@ const HEADERS = {
        })
        .catch(err => console.log(err));
    }
+
+   function uploadCsvChart(store,action) {
+    let url = "http://localhost:1337/parse/classes/charts";
+   
+       fetch(url, {
+           method: "post",
+           headers: HEADERS,
+           body: JSON.stringify(action.Data)
+       })
+       .then(data => data.json())
+       .then(result => {
+           store.dispatch({
+               type:"CHART_UPLOADED",
+               csvChart:result
+           })
+           console.log(result);
+       })
+       .catch(err => console.log(err));
+   }
    
    function getAllCharts(store,action) {
        
@@ -49,7 +68,8 @@ const HEADERS = {
    
        fetch(url, {
            method: "get",
-           headers: HEADERS
+           headers: HEADERS,
+          
        })
        .then(data => data.json())
        .then(result => {
@@ -101,4 +121,4 @@ const HEADERS = {
        .catch(err => console.log(err));
    }
 
-   export {createChart,getAllCharts,getOneChart,editOneChart,removeChart}
+   export {createChart,uploadCsvChart, getAllCharts,getOneChart,editOneChart,removeChart}

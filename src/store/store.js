@@ -1,13 +1,15 @@
 import {createStore, combineReducers} from 'redux';
 import ChartReducer from './reducers/ChartReducer.js';
 import saveChartsReducer from './reducers/saveChartsReducer.js';
+import csvUploadReducer from './reducers/csvUploadReducer.js';
 //import {getUserAccess} from "../store/api/index.js";
 
 
 
 let reducer = combineReducers({
     chartData: ChartReducer,
-    charts: saveChartsReducer
+    charts: saveChartsReducer,
+    csvChart: csvUploadReducer
 });
 
 let store = createStore(reducer);
