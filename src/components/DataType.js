@@ -28,7 +28,7 @@ class DataTypeComponent extends React.Component {
     //     <Redirect to={`/app/chart/${this.props.charts.results.objectId}`} />
     //   );
     // }
-    console.log("datatype inside", this.props.chartData.objectId);
+    // console.log("datatype inside", this.props.chartData.objectId);
 
     return (
       <div className="container">

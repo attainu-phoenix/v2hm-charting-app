@@ -42,7 +42,7 @@ class ChartDataComponent extends React.Component {
   }
 
   render() {
-    console.log("inside chartdatatable comp", this.props.chartData.objectId);
+    // console.log("inside chartdatatable comp", this.props.chartData.objectId);
     return (
       <div className="row">
         <div className="col-md-6">
