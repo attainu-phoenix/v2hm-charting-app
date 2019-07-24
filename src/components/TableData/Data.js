@@ -40,28 +40,28 @@ class DataComponent extends React.Component {
           data: [
             {
               id: 1,
-              name: "xyz",
+              name: "pepsi",
               y: 23
             },
             {
               id: 2,
-              name: "",
-              y: ""
+              name: "coca cola",
+              y: 43
             },
             {
               id: 3,
-              name: "",
-              y: ""
+              name: "kingfisher",
+              y: 34
             },
             {
               id: 4,
-              name: "",
-              y: ""
+              name: "budweiser",
+              y: 21
             },
             {
               id: 5,
-              name: "",
-              y: ""
+              name: "carlsberg",
+              y: 11
             }
           ]
         }
@@ -138,8 +138,6 @@ class DataComponent extends React.Component {
   render() {
     return (
       <div>
-        {/* Todo - Dynamic edit functionality for chart name */}
-        <h4 className="mb-5">Chart Name</h4>
         <DataTable
           onTableUpdate={this.handleTableUpdate.bind(this)}
           onRowAdd={this.handleAddRow.bind(this)}
@@ -148,20 +146,6 @@ class DataComponent extends React.Component {
         />
         <div className="btn btn-warning mr-3" onClick={this.updateChartHandle}>
           Update Chart
-        </div>
-        <div className="my-4 text-center">
-          <div className="btn btn-warning mr-3" onClick={this.toLineChart}>
-            Line Chart
-          </div>
-          <div className="btn btn-warning mx-3" onClick={this.toPieChart}>
-            Pie Chart
-          </div>
-          <div className="btn btn-warning mx-3" onClick={this.toBarChart}>
-            Bar Chart
-          </div>
-          <div className="btn btn-warning ml-3" onClick={this.toAreaChart}>
-            Area Chart
-          </div>
         </div>
       </div>
     );

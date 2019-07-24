@@ -22,7 +22,6 @@ function chartReducer(chart = {}, action) {
     ]
   };
 
-
   if (action.type === "CREATE_CHART") {
     createChart(store, action);
   }

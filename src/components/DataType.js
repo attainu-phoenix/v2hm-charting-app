@@ -15,6 +15,7 @@ class DataTypeComponent extends React.Component {
       type: "CLEAR_CHART"
     });
   }
+
   createChartHandle() {
     let newChartId = Math.floor(Math.random() * 99999);
 
@@ -22,12 +23,9 @@ class DataTypeComponent extends React.Component {
       type: "CREATE_CHART",
       newChartData: {
         userId: "33sEqWyntO",
-        name: "New Chart " + newChartId,
-        chartType: "line",
-        chartData: [
-          {name: "Ansal", y: 12},
-          {name: "Vaibhav", y: 50}
-        ]
+        name: "Untitled Chart " + newChartId,
+        chartType: "pie",
+        chartData: [{ name: "Ansal", y: 12 }, { name: "Vaibhav", y: 50 }]
       }
     });
   }

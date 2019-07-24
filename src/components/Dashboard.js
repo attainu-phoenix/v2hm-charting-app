@@ -50,19 +50,13 @@ class DashboardComponent extends React.Component {
             this.props.charts.map(c => {
               return (
                 <div
+                  key={c.objectId}
                   className="card bg-secondary mt-3 mb-2 mx-2"
                   style={{
                     width: 180,
                     height: 180
                   }}
                 >
-                  {/* <button
-                    chartId={c.objectId}
-                    className="btn btn-danger btn-small"
-                    onClick={this.deleteChartHandle}
-                  >
-                    delete
-                  </button> */}
                   <Link to={`/app/chart/${c.objectId}`}>
                     <div className="card-body text-white">
                       <small>
