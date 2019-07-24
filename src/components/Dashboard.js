@@ -55,6 +55,7 @@ class DashboardComponent extends React.Component {
                     width: 180,
                     height: 180
                   }}
+                  key={c.objectId}
                 >
                   {/* <button
                     chartId={c.objectId}

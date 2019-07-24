@@ -29,7 +29,7 @@ class DataTable extends React.Component {
     return (
       <div>
         <Scroll>
-          <table class="table table-borderless">
+          <table className="table table-borderless">
             <thead>
               <tr>
                 <th scope="col" />
