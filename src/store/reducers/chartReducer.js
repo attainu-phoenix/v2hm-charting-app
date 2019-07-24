@@ -7,6 +7,43 @@ import {
 import { store } from "../store.js";
 
 function chartReducer(chart = {}, action) {
+  let highChartOptions = {
+    chart: {
+      type: "line"
+    },
+    title: {
+      text: ""
+    },
+    series: [
+      {
+        colorByPoint: true,
+        data: [
+          {
+            name: "Coca Cola",
+            y: 35
+          },
+          {
+            name: "Red Bull",
+            y: 15
+          },
+          {
+            name: "Pepsi",
+            y: 25
+          },
+          {
+            name: "Kingfisher",
+            y: 15
+          },
+          {
+            name: "Carlsberg",
+            y: 10
+          }
+        ]
+      }
+    ]
+  };
+
+
   if (action.type === "CREATE_CHART") {
     createChart(store, action);
   }
@@ -20,7 +57,9 @@ function chartReducer(chart = {}, action) {
   }
 
   if (action.type === "ONE_CHART_LOADED") {
-    return action.oneChartData;
+    let chart = action.oneChartData;
+    chart.chartDataObject = highChartOptions;
+    return chart;
   }
 
   if (action.type === "EDIT_CHART") {

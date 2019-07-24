@@ -10,67 +10,14 @@ class ChartDataComponent extends React.Component {
     super(props);
 
     this.saveChartHandle = this.saveChartHandle.bind(this);
-
-    this.options = {
-      chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: "line"
-      },
-      title: {
-        text: "Export sales January, 2019"
-      },
-      tooltip: {
-        pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>"
-      },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          cursor: "pointer",
-          dataLabels: {
-            enabled: false
-          },
-          showInLegend: true
-        }
-      },
-      series: [
-        {
-          name: "Brands",
-          colorByPoint: true,
-          data: [
-            {
-              name: "Coca Cola",
-              y: 35
-            },
-            {
-              name: "Red Bull",
-              y: 15
-            },
-            {
-              name: "Pepsi",
-              y: 25
-            },
-            {
-              name: "Kingfisher",
-              y: 15
-            },
-            {
-              name: "Carlsberg",
-              y: 10
-            }
-          ]
-        }
-      ]
-    };
   }
 
-  // componentDidMount() {
-  //   this.props.dispatch({
-  //     type: "GET_CHART",
-  //     chartId: this.props.chartData.objectId
-  //   });
-  // }
+  componentDidMount() {
+    this.props.dispatch({
+      type: "GET_ONE_CHART",
+      chartId: this.props.match.params.chartId
+    });
+  }
 
   saveChartHandle() {
     this.props.dispatch({
@@ -111,7 +58,7 @@ class ChartDataComponent extends React.Component {
             <button className="btn btn-primary mx-3">Reset Fields</button>
           </div>
           <div className="my-4">
-            <ChartComponent options={this.options} />
+            { (this.props.chart && this.props.chart.chartDataObject) ? <ChartComponent options={this.props.chart.chartDataObject} /> : "" }
           </div>
         </div>
       </div>
