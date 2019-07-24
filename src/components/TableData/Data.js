@@ -40,8 +40,8 @@ class DataComponent extends React.Component {
           data: [
             {
               id: 1,
-              name: "",
-              y: ""
+              name: "xyz",
+              y: 23
             },
             {
               id: 2,
@@ -76,7 +76,7 @@ class DataComponent extends React.Component {
     let newData = {
       id: id,
       name: "",
-      y: 0
+      y: ""
     };
 
     let options = this.state.options;
