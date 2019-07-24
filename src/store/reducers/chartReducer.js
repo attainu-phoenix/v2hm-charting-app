@@ -48,11 +48,7 @@ function chartReducer(chart = {}, action) {
   }
 
   if (action.type === "CHART_EDITED") {
-    let chart = action.editedChartData;
-    chart.chartDataObject = highChartOptions;
-    chart.chartDataObject.series[0].data = chart.chartData;
-    chart.chartDataObject.chart.type = chart.chartType;
-    return chart;
+    getOneChart(store, action);
   }
 
   if (action.type === "REMOVE_CHART") {

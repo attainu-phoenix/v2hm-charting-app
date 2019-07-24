@@ -22,8 +22,9 @@ class ChartDataComponent extends React.Component {
   saveChartHandle() {
     this.props.dispatch({
       type: "EDIT_CHART",
+      chartId: this.props.match.params.chartId,
       chartData: {
-        objectId: "kB2fz1EgPm",
+        objectId: this.props.match.params.chartId,
         name: "Hello World",
         chartType: "bar",
         chartData: [
