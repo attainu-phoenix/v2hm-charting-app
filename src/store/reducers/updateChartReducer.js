@@ -12,7 +12,7 @@ function updateChartReducer(oldState, action) {
   newState.data = oldState.data;
 
   if (action.type === "UPDATE_CHART") {
-    console.log(action.chart_data);
+    console.log("inside reducer", action.chart_data);
     newState.data = action.chart_data;
     console.log(newState);
   }

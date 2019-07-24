@@ -66,10 +66,9 @@ class DashboardComponent extends React.Component {
                   <Link to={`/app/chart/${c.objectId}`}>
                     <div className="card-body text-white">
                       <small>
-                        {c.name} Chart type - {c.chartType}
+                        {c.name} <br /> Type -{" "}
+                        {c.chartType.toUpperCase() + " Chart"}
                       </small>
-
-                      <small>{c.updatedAt}</small>
                     </div>
                   </Link>
                 </div>
