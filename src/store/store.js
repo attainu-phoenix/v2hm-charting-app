@@ -1,3 +1,4 @@
+
 import { createStore, combineReducers } from "redux";
 import chartsReducer from "./reducers/chartsReducer.js";
 import chartReducer from "./reducers/chartReducer.js";
@@ -7,6 +8,7 @@ let reducer = combineReducers({
   chart: chartReducer,
   charts: chartsReducer,
   updateChart: updateChartReducer
+
 });
 let store = createStore(reducer);
 
