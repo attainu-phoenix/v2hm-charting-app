@@ -80,7 +80,7 @@ class ChartDataComponent extends React.Component {
             <button className="btn btn-primary mx-3">Reset Fields</button>
           </div>
           <div className="my-4">
-            <ChartComponent options={this.props.updateChart.data} />
+            { this.props.chart && this.props.options ? <ChartComponent options={this.props.chart} /> : "Loading Chart..." }
           </div>
         </div>
       </div>
