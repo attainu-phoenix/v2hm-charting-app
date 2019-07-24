@@ -1,97 +1,93 @@
-import {createStore, combineReducers} from 'redux';
-import ChartReducer from './reducers/ChartReducer.js';
-import saveChartsReducer from './reducers/saveChartsReducer.js';
-import csvUploadReducer from './reducers/csvUploadReducer.js';
-//import {getUserAccess} from "../store/api/index.js";
 
-
+import { createStore, combineReducers } from "redux";
+import chartsReducer from "./reducers/chartsReducer.js";
+import chartReducer from "./reducers/chartReducer.js";
+import updateChartReducer from "./reducers/updateChartReducer.js";
 
 let reducer = combineReducers({
-    chartData: ChartReducer,
-    charts: saveChartsReducer,
-    csvChart: csvUploadReducer
-});
+  chart: chartReducer,
+  charts: chartsReducer,
+  updateChart: updateChartReducer
 
+});
 let store = createStore(reducer);
 
 store.subscribe(() => {
-    console.log("dispatched ==>", store.getState());
-})
+  console.log("dispatched ==>", store.getState());
+});
 
 function stateMapper(state) {
-    return state;
+  return state;
 }
 
-/*The code below is has variable definition and store dispatches used strictly for testing purpose only please follow the important instructions for testing: 
-1. Before doing npm start ensure that all this code is commented out
-2. Once you sucessfully login and app is loaded i.e.  http://localhost:3000/app for most of the systems then remove the // from below 2 variable declarations,and import {getUserAccess} defined above and any one store.dispatch which you want to test
-3.You are free to login and logout as many times as you want as no need for commenting out full thing long as you do not terminate by pressing ctrl C   
- */
+export { store, stateMapper };
 
-    //let user = getUserAccess();
+// Reducer examples
 
-    //let userId = user.userId;
+// // Create a chart
+// store.dispatch({
+//     type: "CREATE_CHART",
+//     newChartData: {
+//         userId : "123",
+//         name: "Hello World",
+//         data: []
+//     }
+// })
 
-/*store.dispatch({                              //Chart with given chartId removed now 5 charts left with gmail
-    type: "REMOVE_CHART",
-    removechart:({
-        userId: userId,
-        chartId: "bEbnAxbumF"
-    })
-})*/
+// // Fetch currently loaded user's charts
+// store.dispatch({
+//   type: "FETCH_CHARTS",
+//   userId: "33sEqWyntO"
+// });
 
+// Clear the current chart and fetch a single chart
+// store.dispatch({
+//     type: "CLEAR_CHART"
+// });
+// store.dispatch({
+//     type: "GET_ONE_CHART",
+//     chartId : "9BMFJ1GXMq"
+// });
 
-/*store.dispatch({                              //Chart with object Id D2Vu765LjL Generated
-    type: "CREATE_CHART",
-    newData: ({
-        userId: userId,
-        name: "Export sales, Janurary 2019",
-        chartType: "bar",
-        chartData: [
-         {x: 10, y: 35},
-         {x: 11, y: 25},
-         {x: 12, y: 15}
-        ]
-    })
-})*/
+// Edit a chart item
+// store.dispatch({
+//     type: "EDIT_CHART",
+//     chartData : {
+//         objectId: "9BMFJ1GXMq",
+//         name: "Hello World " + new Date()
+//     }
+// });
 
-/*store.dispatch({
-    type: "GET_CHART",                       //was able to get required chart
-    onechart:({
-        userId: userId,
-        chartId: "bEbnAxbumF" 
-    })
-})*/
+// Remove a chart item
+// store.dispatch({
+//     type: "REMOVE_CHART",
+//     chartId: "9BMFJ1GXMq"
+// });
 
+// function updateChartReducer(oldState, action) {
+//   let initialState = {
+//     data: {}
+//   };
 
-/*store.dispatch({                                         //Before remove have 6 charts with this userId
-    type: "GET_ALL_CHARTS",
-    allcharts:({
-        userId: userId
-    })
-})*/
+//   if (!oldState) {
+//     return initialState;
+//   }
 
+//   let newState = initialState;
 
+//   newState.data = oldState.data;
 
-/*store.dispatch({
-    type: "UPDATE_CHART",
-    //editonechart:({
-       // chartId: "D2Vu765LjL" 
-    //}),
-    updatedData:({                                      //chart with Id D2Vu765LjL modified
-        userId: userId,
-        chartId: "D2Vu765LjL",
-        name: "Export sales, July 2019,",
-        chartType: "pie",
-        chartData: [
-         {x: 12, y: 35},
-         {x: 14, y: 25},
-         {x: 15, y: 15},
-         {x: 16, y: 10},
-         {x: 17, y: 15}     
-       ]
-   })
-})*/
+//   if (action.type === "UPDATE_CHART") {
+//     console.log(action.chart_data);
+//     newState.data = action.chart_data;
+//     console.log(newState);
+//   }
 
+//   if (action.type === "CLEAR_CHART") {
+//     return {};
+//   }
 
-export {store, stateMapper};
+//   return newState;
+// }
+
+// export default updateChartReducer;

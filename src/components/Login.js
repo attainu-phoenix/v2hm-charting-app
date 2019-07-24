@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {GoogleLogin} from "react-google-login";
+import { GoogleLogin } from "react-google-login";
 
 class Login extends React.Component {
-  
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.googleCallback = this.googleCallback.bind(this);
-}
+  }
+
 
 googleCallback(response){
     localStorage.setItem("testing", JSON.stringify(response))
@@ -24,13 +24,11 @@ googleCallback(response){
         userId: response.profileObj.googleId
 
     }
+
     localStorage.setItem("user", JSON.stringify(user));
 
-    window.location.href = "/app";         
-
-    
-}
-
+    window.location.href = "/app";
+  }
 
 render(){
     return(

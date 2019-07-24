@@ -13,7 +13,7 @@ class Home extends React.Component {
     let loggedIn = localStorage.getItem("user");
 
     if (loggedIn) {
-      return <Redirect to="/app" />;
+      return <Redirect to="/app/dashboard" />;
     } else {
       return <Redirect to="/" />;
     }
@@ -21,15 +21,14 @@ class Home extends React.Component {
 
   render() {
     return (
-      <Router> 
-        <Route path="/" exact={true} component={Landing} /> 
-        <Route path = "/login" component = {Login} />
+      <Router>
+        <Route path="/" exact={true} component={Landing} />
+        <Route path="/login" component={Login} />
         <Route path="/app" component={App} />
         {this.doRedirect()}
       </Router>
-      );
-    }
+    );
   }
-  
-ReactDOM.render(<Home />, document.getElementById("root"));
+}
 
+ReactDOM.render(<Home />, document.getElementById("root"));

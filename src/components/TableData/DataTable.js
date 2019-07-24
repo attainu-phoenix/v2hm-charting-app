@@ -3,16 +3,19 @@ import React from "react";
 import DataRow from "./DataRow";
 import Scroll from "../Scroll";
 
-import "../style/DataTable.css";
+import "../../style/DataTable.css";
 
 class DataTable extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
-    var onTableUpdate = this.props.onTableUpdate;
-    var rowDel = this.props.onRowDel;
-    var data = this.props.datas.map(function(data) {
+    let onTableUpdate = this.props.onTableUpdate;
+    let rowDel = this.props.onRowDel;
+    // console.log("my dataa", this.props.datas);
+    // let data = this.props.datas;
+
+    let data = this.props.datas.map(data => {
       return (
         <DataRow
           onTableUpdate={onTableUpdate}
@@ -22,10 +25,11 @@ class DataTable extends React.Component {
         />
       );
     });
+
     return (
       <div>
         <Scroll>
-          <table class="table table-borderless">
+          <table className="table table-borderless">
             <thead>
               <tr>
                 <th scope="col" />
@@ -34,15 +38,6 @@ class DataTable extends React.Component {
                 </th>
                 <th scope="col">
                   <h6>B</h6>
-                </th>
-                <th scope="col">
-                  <h6>C</h6>
-                </th>
-                <th scope="col">
-                  <h6>D</h6>
-                </th>
-                <th scope="col">
-                  <h6>E</h6>
                 </th>
               </tr>
             </thead>
