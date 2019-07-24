@@ -12,18 +12,19 @@ class ChartDataComponent extends React.Component {
     this.saveChartHandle = this.saveChartHandle.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.props.dispatch({
-  //     type: "GET_CHART",
-  //     chartId: this.props.chartData.objectId
-  //   });
-  // }
+  componentDidMount() {
+    this.props.dispatch({
+      type: "GET_ONE_CHART",
+      chartId: this.props.match.params.chartId
+    });
+  }
 
   saveChartHandle() {
     this.props.dispatch({
       type: "EDIT_CHART",
+      chartId: this.props.match.params.chartId,
       chartData: {
-        objectId: "kB2fz1EgPm",
+        objectId: this.props.match.params.chartId,
         name: "Hello World",
         chartType: "bar",
         chartData: [
@@ -58,7 +59,7 @@ class ChartDataComponent extends React.Component {
             <button className="btn btn-primary mx-3">Reset Fields</button>
           </div>
           <div className="my-4">
-            <ChartComponent options={this.props.updateChart.data} />
+            { (this.props.chart && this.props.chart.chartDataObject) ? <ChartComponent options={this.props.chart.chartDataObject} /> : "" }
           </div>
         </div>
       </div>
