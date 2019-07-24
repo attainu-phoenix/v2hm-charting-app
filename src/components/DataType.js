@@ -24,7 +24,10 @@ class DataTypeComponent extends React.Component {
         userId: "33sEqWyntO",
         name: "New Chart " + newChartId,
         chartType: "line",
-        chartData: []
+        chartData: [
+          {name: "Ansal", y: 12},
+          {name: "Vaibhav", y: 50}
+        ]
       }
     });
   }

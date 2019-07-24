@@ -17,28 +17,7 @@ function chartReducer(chart = {}, action) {
     series: [
       {
         colorByPoint: true,
-        data: [
-          {
-            name: "Coca Cola",
-            y: 35
-          },
-          {
-            name: "Red Bull",
-            y: 15
-          },
-          {
-            name: "Pepsi",
-            y: 25
-          },
-          {
-            name: "Kingfisher",
-            y: 15
-          },
-          {
-            name: "Carlsberg",
-            y: 10
-          }
-        ]
+        data: []
       }
     ]
   };
@@ -59,6 +38,8 @@ function chartReducer(chart = {}, action) {
   if (action.type === "ONE_CHART_LOADED") {
     let chart = action.oneChartData;
     chart.chartDataObject = highChartOptions;
+    chart.chartDataObject.series[0].data = chart.chartData;
+    chart.chartDataObject.chart.type = chart.chartType;
     return chart;
   }
 
