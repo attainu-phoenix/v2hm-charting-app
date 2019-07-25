@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { stateMapper } from "../store/store";
+import { getUserAccess } from "../store/api/index";
 
 class DashboardComponent extends React.Component {
   constructor(props) {
@@ -15,15 +16,6 @@ class DashboardComponent extends React.Component {
       userId: "33sEqWyntO"
     });
   }
-
-  // deleteChartHandle() {
-  //   this.props.dispatch({
-  //     type: "REMOVE_CHART",
-  //     removechart: {
-  //       chartId: this.props.charts.results.objectId
-  //     }
-  //   });
-  // }
 
   render() {
     console.log("props in dashboard", this.props.charts);

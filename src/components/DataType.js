@@ -45,13 +45,13 @@ class DataTypeComponent extends React.Component {
         <br />
 
         {/* <Link to={`/app/chart/${this.props.charts.objectId}`}> */}
-        <div
+        {/* <div
           className="card bg-info text-white"
           style={{ width: 180, height: 140, float: "left" }}
           onClick={this.createChartHandle}
         >
           <div className="card-body">Input Data</div>
-        </div>
+        </div> */}
 
         <Link to="/app/upload-csv">
           <div
