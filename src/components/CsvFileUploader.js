@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { stateMapper } from "../store/store";
@@ -58,6 +58,11 @@ class CSVFileUploaderComponent extends React.Component {
   };
 
   render() {
+    if (this.props.chart && this.props.chart.objectId) {
+      return <Redirect to={`/app/chart/${this.props.chart.objectId}`} />;
+    }
+
+    
     return (
       <div>
         <Link to="/app/data-type">
