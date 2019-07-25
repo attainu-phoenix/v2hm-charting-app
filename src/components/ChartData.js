@@ -54,6 +54,7 @@ class ChartDataComponent extends React.Component {
     updatedData.name = this.props.chart.name;
     updatedData.objectId = this.props.chart.objectId;
     updatedData.userId = this.props.chart.userId;
+    updatedData.chartData = this.props.chart.chartData;
 
     this.props.dispatch({
       type: "EDIT_CHART",
@@ -68,6 +69,7 @@ class ChartDataComponent extends React.Component {
     updatedData.name = this.props.chart.name;
     updatedData.objectId = this.props.chart.objectId;
     updatedData.userId = this.props.chart.userId;
+    updatedData.chartData = this.props.chart.chartData;
 
     this.props.dispatch({
       type: "EDIT_CHART",
@@ -82,6 +84,7 @@ class ChartDataComponent extends React.Component {
     updatedData.name = this.props.chart.name;
     updatedData.objectId = this.props.chart.objectId;
     updatedData.userId = this.props.chart.userId;
+    updatedData.chartData = this.props.chart.chartData;
 
     this.props.dispatch({
       type: "EDIT_CHART",
@@ -96,6 +99,7 @@ class ChartDataComponent extends React.Component {
     updatedData.name = this.props.chart.name;
     updatedData.objectId = this.props.chart.objectId;
     updatedData.userId = this.props.chart.userId;
+    updatedData.chartData = this.props.chart.chartData;
 
     this.props.dispatch({
       type: "EDIT_CHART",

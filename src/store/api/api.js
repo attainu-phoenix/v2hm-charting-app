@@ -69,7 +69,7 @@ function editOneChart(store, action) {
     .then(result => {
       store.dispatch({
         type: "CHART_EDITED",
-        editedChartData: result
+        editedChartData: action.chartData
       });
     })
     .catch(err => console.log(err));
