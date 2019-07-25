@@ -9,13 +9,6 @@ class ChartDataComponent extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      name: "",
-      chartType: "pie",
-      chartData: []
-    };
-
-    this.onChartNameChange = this.onChartNameChange.bind(this);
     this.toPieChart = this.toPieChart.bind(this);
     this.toLineChart = this.toLineChart.bind(this);
     this.toColumnChart = this.toColumnChart.bind(this);
@@ -55,46 +48,58 @@ class ChartDataComponent extends React.Component {
   }
 
   toLineChart() {
+    let updatedData = {};
+
+    updatedData.chartType = "line";
+    updatedData.name = this.props.chart.name;
+    updatedData.objectId = this.props.chart.objectId;
+    updatedData.userId = this.props.chart.userId;
+
     this.props.dispatch({
       type: "EDIT_CHART",
-      chartId: this.props.match.params.chartId,
-      chartData: {
-        objectId: this.props.chart.objectId,
-        chartType: "line"
-      }
+      chartData: updatedData
     });
   }
 
   toPieChart() {
+    let updatedData = {};
+
+    updatedData.chartType = "pie";
+    updatedData.name = this.props.chart.name;
+    updatedData.objectId = this.props.chart.objectId;
+    updatedData.userId = this.props.chart.userId;
+
     this.props.dispatch({
       type: "EDIT_CHART",
-      chartId: this.props.match.params.chartId,
-      chartData: {
-        objectId: this.props.chart.objectId,
-        chartType: "pie"
-      }
+      chartData: updatedData
     });
   }
 
   toBarChart() {
+    let updatedData = {};
+
+    updatedData.chartType = "bar";
+    updatedData.name = this.props.chart.name;
+    updatedData.objectId = this.props.chart.objectId;
+    updatedData.userId = this.props.chart.userId;
+
     this.props.dispatch({
       type: "EDIT_CHART",
-      chartId: this.props.match.params.chartId,
-      chartData: {
-        objectId: this.props.chart.objectId,
-        chartType: "bar"
-      }
+      chartData: updatedData
     });
   }
 
   toColumnChart() {
+    let updatedData = {};
+
+    updatedData.chartType = "column";
+    updatedData.name = this.props.chart.name;
+    updatedData.objectId = this.props.chart.objectId;
+    updatedData.userId = this.props.chart.userId;
+
     this.props.dispatch({
       type: "EDIT_CHART",
-      chartId: this.props.match.params.chartId,
-      chartData: {
-        objectId: this.props.chart.objectId,
-        chartType: "column"
-      }
+      chartData: updatedData
     });
   }
 
@@ -116,11 +121,14 @@ class ChartDataComponent extends React.Component {
           <Link to="/app/data-type">
             <h5>&larr; Back</h5>
           </Link>
-          <input
+          {/*
+            <input
             type="text"
-            value={this.state.name}
-            onChange={this.onChartNameChange}
+            value={this.props.chart ? this.props.chart.name : ""}
+            // TODO: Use proper class name
           />
+          */}
+          <h2>{this.props.chart ? this.props.chart.name : "Loading Chart..."}</h2>
           <div className="col-offset">
             <div className="my-4 text-center">
               {this.props.chart && this.props.chart.chartDataObject ? (
