@@ -1,20 +1,58 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-class CSVFileUploader extends React.Component {
+import { connect } from "react-redux";
+import { stateMapper } from "../store/store";
+
+
+class CSVFileUploaderComponent extends React.Component {
   constructor() {
     super();
     this.state = {
       files: ""
     };
+
+    this.fileChanged = this.fileChanged.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.dispatch({
+        type: "CLEAR_CHART"
+    });
   }
 
   fileChanged = e => {
-    let file = e.target.files[0];
+    let file = e.target.files[0],
+        self = this;
 
     let reader = new FileReader();
     reader.onload = function(e) {
-      console.log(e.target.result);
+      let data = e.target.result;
+
+      // Clean up the data
+      data = data.trim();
+      data = data.split("\n");
+      data = data.map(d => {
+        
+        // Construct the object
+        let object = {},
+            values = d.split(",");
+        object["name"] = values[0];
+        object["y"] = parseInt(values[1], 10);
+        return object;
+      });
+
+      // Send the dispatch
+      self.props.dispatch({
+        type: "CREATE_CHART",
+        newChartData: {
+          userId: "33sEqWyntO",
+          name: "Untitled Chart",
+          chartType: "pie",
+          chartData: data
+        }
+      });
+
     };
     reader.readAsText(file);
   };
@@ -48,4 +86,7 @@ class CSVFileUploader extends React.Component {
     );
   }
 }
+
+
+let CSVFileUploader = connect(stateMapper)(CSVFileUploaderComponent);
 export default CSVFileUploader;

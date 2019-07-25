@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Login from "./components/Login.js";
 
 import Landing from "./components/Landing.js";
-import App from "./components/App.js";
+import App from "./components/app.js";
 
 import { store } from "./store/store.js";
 
