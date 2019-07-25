@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { stateMapper } from "../store/store";
@@ -9,10 +9,17 @@ class ChartDataComponent extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      name: ""
+    };
+
     this.toPieChart = this.toPieChart.bind(this);
     this.toLineChart = this.toLineChart.bind(this);
     this.toColumnChart = this.toColumnChart.bind(this);
     this.toBarChart = this.toBarChart.bind(this);
+    this.onDeleteChart = this.onDeleteChart.bind(this);
+    this.nameUpdateButton = this.nameUpdateButton.bind(this);
+    this.onNameChange = this.onNameChange.bind(this);
   }
 
   componentDidMount() {
@@ -39,12 +46,25 @@ class ChartDataComponent extends React.Component {
     });
   }
 
-  onChartNameChange(event) {
-    // this.props.dispatch({
-    //   type: "EDIT_CHART",
-    //   chartId: this.props.match.params.chartId,
-    //   name: event.target.value
-    // });
+  onNameChange(event) {
+    this.setState({
+      name: event.target.value
+    });
+  }
+
+  nameUpdateButton() {
+    let updatedData = {};
+
+    updatedData.chartType = this.props.chart.chartType;
+    updatedData.name = this.state.name;
+    updatedData.objectId = this.props.chart.objectId;
+    updatedData.userId = this.props.chart.userId;
+    updatedData.chartData = this.props.chart.chartData;
+
+    this.props.dispatch({
+      type: "EDIT_CHART",
+      chartData: updatedData
+    });
   }
 
   toLineChart() {
@@ -107,6 +127,13 @@ class ChartDataComponent extends React.Component {
     });
   }
 
+  onDeleteChart() {
+    this.props.dispatch({
+      type: "REMOVE_CHART",
+      chartId: this.props.chart.objectId
+    });
+  }
+
   render() {
     {
       if (!this.props.chart.chartDataObject) {
@@ -122,17 +149,36 @@ class ChartDataComponent extends React.Component {
     return (
       <div className="row">
         <div className="col-md">
-          <Link to="/app/data-type">
-            <h5>&larr; Back</h5>
-          </Link>
-          {/*
-            <input
-            type="text"
-            value={this.props.chart ? this.props.chart.name : ""}
-            // TODO: Use proper class name
-          />
-          */}
-          <h2>{this.props.chart ? this.props.chart.name : "Loading Chart..."}</h2>
+          <div className="form-row">
+            <div className="col">
+              <input
+                type="text"
+                placeholder={this.props.chart ? this.props.chart.name : ""}
+                className="form-control"
+                onChange={this.onNameChange}
+              />
+            </div>
+
+            <div className="col">
+              <Link
+                to="/app/dashboard"
+                className="btn btn-danger mr-5 float-right"
+                onClick={this.onDeleteChart}
+              >
+                Delete Chart
+              </Link>
+
+              <div
+                className="btn btn-success ml-2 "
+                onClick={this.nameUpdateButton}
+              >
+                Update Name
+              </div>
+            </div>
+          </div>
+          {/* <h2>
+            {this.props.chart ? this.props.chart.name : "Loading Chart..."}
+          </h2> */}
           <div className="col-offset">
             <div className="my-4 text-center">
               {this.props.chart && this.props.chart.chartDataObject ? (

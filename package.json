@@ -6,6 +6,7 @@
     "@handsontable/react": "^3.0.0",
     "handsontable": "^7.1.0",
     "highcharts": "^7.1.2",
+    "highcharts-exporting": "^0.1.7",
     "highcharts-react-official": "^2.2.2",
     "papaparse": "^5.0.0",
     "react": "^16.8.6",
