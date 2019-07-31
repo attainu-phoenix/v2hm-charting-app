@@ -1,9 +1,9 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
 
+import { getUserAccess } from "../store/api/index";
 import { connect } from "react-redux";
 import { stateMapper } from "../store/store";
-
 
 class CSVFileUploaderComponent extends React.Component {
   constructor() {
@@ -17,13 +17,13 @@ class CSVFileUploaderComponent extends React.Component {
 
   componentDidMount() {
     this.props.dispatch({
-        type: "CLEAR_CHART"
+      type: "CLEAR_CHART"
     });
   }
 
   fileChanged = e => {
     let file = e.target.files[0],
-        self = this;
+      self = this;
 
     let reader = new FileReader();
     reader.onload = function(e) {
@@ -33,26 +33,25 @@ class CSVFileUploaderComponent extends React.Component {
       data = data.trim();
       data = data.split("\n");
       data = data.map(d => {
-        
         // Construct the object
         let object = {},
-            values = d.split(",");
+          values = d.split(",");
         object["name"] = values[0];
         object["y"] = parseInt(values[1], 10);
         return object;
       });
 
       // Send the dispatch
+      let user = getUserAccess();
       self.props.dispatch({
         type: "CREATE_CHART",
         newChartData: {
-          userId: "33sEqWyntO",
+          userId: user.userId, //33sEqWyntO
           name: "Untitled Chart",
           chartType: "pie",
           chartData: data
         }
       });
-
     };
     reader.readAsText(file);
   };
@@ -62,12 +61,12 @@ class CSVFileUploaderComponent extends React.Component {
       return <Redirect to={`/app/chart/${this.props.chart.objectId}`} />;
     }
 
-    
     return (
       <div>
-        <Link to="/app/data-type">
-          <h5>&larr; Back</h5>
-        </Link>
+        <div className="app-heading">
+          <i class="fas fa-cloud-upload-alt" />
+          <h5>Upload CSV</h5>
+        </div>
 
         <div className="custom-file upload">
           <input
@@ -82,16 +81,23 @@ class CSVFileUploaderComponent extends React.Component {
             Choose file
           </label>
         </div>
+        <Link to="/app/dashboard">
+          <button className="btn btn-secondary mt-4">Back</button>
+        </Link>
+
+        <div className="note text-center mt-5">
+          <h4>Important Note:</h4>
+          <p>
+            Please upload data in CSV File Format only.
+            <br />
+            First column in data grid will serve as X-axis and second column
+            will be used as Y-axis in charts.
+          </p>
+        </div>
       </div>
-      // <input className = "text-success"
-      //     type="file"
-      //     onChange={ this.fileChanged }
-      //     accept=".csv"
-      // />
     );
   }
 }
-
 
 let CSVFileUploader = connect(stateMapper)(CSVFileUploaderComponent);
 export default CSVFileUploader;

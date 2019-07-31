@@ -147,60 +147,54 @@ class ChartDataComponent extends React.Component {
     }
 
     return (
-      <div className="row">
-        <div className="col-md">
-          <div className="form-row">
-            <div className="col">
-              <input
-                type="text"
-                placeholder={this.props.chart ? this.props.chart.name : ""}
-                className="form-control"
-                onChange={this.onNameChange}
-              />
+      <div className="row chart-wrapper">
+        <div className="col-md-4">
+          <input
+            type="text"
+            placeholder={this.props.chart ? this.props.chart.name : ""}
+            className="form-control"
+            onChange={this.onNameChange}
+            style={{ display: "inline" }}
+          />
+          <div className="btn btn-name" onClick={this.nameUpdateButton}>
+            <i className="fas fa-check mr-2" /> Update Name
+          </div>
+          <Link
+            to="/app/dashboard"
+            className="btn btn-secondary btn-delete"
+            onClick={this.onDeleteChart}
+          >
+            <i class="fas fa-trash mr-2" />
+            Delete Chart
+          </Link>
+          <div className="button-wrapper text-center">
+            <h5>Change Chart Type</h5>
+            <div className="btn-chart" onClick={this.toLineChart}>
+              <img src="/line-icon.svg" />
+            </div>
+            <div className="btn-chart btn-pie" onClick={this.toPieChart}>
+              <img src="/pie-icon-hover.svg" />
             </div>
 
-            <div className="col">
-              <Link
-                to="/app/dashboard"
-                className="btn btn-danger mr-5 float-right"
-                onClick={this.onDeleteChart}
-              >
-                Delete Chart
-              </Link>
+            <div className="btn-chart btn-bar" onClick={this.toBarChart}>
+              <img src="/bar-icon.svg" />
+            </div>
 
-              <div
-                className="btn btn-success ml-2 "
-                onClick={this.nameUpdateButton}
-              >
-                Update Name
-              </div>
+            <div className="btn-chart btn-column" onClick={this.toColumnChart}>
+              <img src="/column-icon.svg" />
             </div>
           </div>
-          {/* <h2>
-            {this.props.chart ? this.props.chart.name : "Loading Chart..."}
-          </h2> */}
-          <div className="col-offset">
-            <div className="my-4 text-center">
-              {this.props.chart && this.props.chart.chartDataObject ? (
-                <ChartComponent options={this.props.chart.chartDataObject} />
-              ) : (
-                ""
-              )}
-            </div>
-          </div>
-          <div className="my-4 text-center">
-            <div className="btn btn-warning mr-3" onClick={this.toLineChart}>
-              Line Chart
-            </div>
-            <div className="btn btn-warning mx-3" onClick={this.toPieChart}>
-              Pie Chart
-            </div>
-            <div className="btn btn-warning mx-3" onClick={this.toBarChart}>
-              Bar Chart
-            </div>
-            <div className="btn btn-warning ml-3" onClick={this.toColumnChart}>
-              Column Chart
-            </div>
+        </div>
+        <div className="col-md-8">
+          <h4 className="text-center">
+            {this.props.chart ? this.props.chart.name : ""}
+          </h4>
+          <div className="text-center chart-card">
+            {this.props.chart && this.props.chart.chartDataObject ? (
+              <ChartComponent options={this.props.chart.chartDataObject} />
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

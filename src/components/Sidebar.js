@@ -14,22 +14,6 @@ class Sidebar extends React.Component {
                 DASHBOARD
               </Link>
 
-              {/* <Link to="/app/linechart" className="nav-link text-light">
-                LINE CHART
-              </Link>
-              <Link to="/app/areachart" className="nav-link text-light">
-                AREA CHART
-              </Link>
-              <Link to="/app/barchart" className="nav-link text-light">
-                BAR CHART
-              </Link>
-              <Link
-                to="/app/piechart"
-                className="nav-link text-light pb-5 mb-5"
-              >
-                PIE CHART
-              </Link> */}
-
               <Link to="/app/profile" className="nav-link text-light">
                 PROFILE
               </Link>

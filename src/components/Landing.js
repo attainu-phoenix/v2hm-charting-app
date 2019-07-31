@@ -238,7 +238,7 @@ class Landing extends React.Component {
               <div className="col-md-3">
                 <div className="team-member-container">
                   <div className="team-member-img">
-                    <img src="/mohit.jpg" alt="" />
+                    <img src="/sami.jpg" alt="" />
                   </div>
                   <div className="team-member-info">
                     <h3>Mohd Sami</h3>
@@ -270,7 +270,7 @@ class Landing extends React.Component {
               <div className="col-md-3">
                 <div className="team-member-container">
                   <div className="team-member-img">
-                    <img src="/mohit.jpg" alt="" />
+                    <img src="/monish.jpg" alt="" />
                   </div>
                   <div className="team-member-info">
                     <h3>Monish Manwani</h3>
@@ -286,7 +286,7 @@ class Landing extends React.Component {
               <div className="col-md-3">
                 <div className="team-member-container">
                   <div className="team-member-img">
-                    <img src="/mohit.jpg" alt="" />
+                    <img src="/Deepak.jpg" alt="" />
                   </div>
                   <div className="team-member-info">
                     <h3>Mohit Kumar</h3>
