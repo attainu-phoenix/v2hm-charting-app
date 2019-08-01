@@ -226,3 +226,35 @@
   list-style: none;
   margin-top: 5px;
 }
+
+.login-modal {
+  width: 400px;
+  height: 250px;
+}
+
+.login-modal h4 {
+  text-align: center;
+  color: #2c2c2c !important;
+}
+
+.login-modal .btn-sm {
+  padding: 1px 7px;
+}
+
+.login-modal .google-wrapper {
+  text-align: center;
+}
+
+.login-modal .google-btn {
+  margin-top: 20px;
+  border: 1px solid #0000003b !important;
+  border-radius: 10px;
+  padding: 0 10px !important;
+}
+
+.login-modal .no-google {
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+  width: 94%;
+}

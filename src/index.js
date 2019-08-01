@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Login from "./components/Login.js";
-
+import LoginModal from "./components/Modal.js";
 import Landing from "./components/Landing.js";
 import App from "./components/App.js";
 

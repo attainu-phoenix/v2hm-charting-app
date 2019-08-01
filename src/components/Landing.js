@@ -3,29 +3,15 @@ import { GoogleLogin } from "react-google-login";
 
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import Login from "./Login";
+import LoginModal from "./Modal";
 import "../style/Index.css";
 
 class Landing extends React.Component {
   constructor(props) {
     super(props);
-
-    this.googleCallback = this.googleCallback.bind(this);
   }
 
-  googleCallback(response) {
-    if (!response || !response.accessToken) {
-      alert("Google signin failed. Please try again");
-      return;
-    }
-    let user = {
-      token: response.accessToken,
-      name: response.profileObj.name
-    };
-    localStorage.setItem("user", JSON.stringify(user));
-
-    window.location.href = "/app";
-  }
   render() {
     return (
       <div className="landing">
@@ -70,7 +56,7 @@ class Landing extends React.Component {
           </button>
 
           <div className="collapse navbar-collapse" id="owlchart-menu">
-            <ul className="navbar-nav mr-auto">
+            <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <a className="nav-link" href="#">
                   Home
@@ -92,14 +78,10 @@ class Landing extends React.Component {
                 </a>
               </li>
               <li className="nav-item">
-                <Link to="/login" className="nav-link text-dark pb-4">
+                {/* <Link to="/login" className="nav-link text-dark pb-4">
                   Login
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/login" className="nav-link text-dark pb-4">
-                  Signup
-                </Link>
+                </Link> */}
+                <LoginModal text="Login" />
               </li>
             </ul>
           </div>
@@ -118,12 +100,8 @@ class Landing extends React.Component {
                   </h3>
                 </div>
                 <div className="home-btn">
-                  <Link
-                    to="/login"
-                    className="btn btn-lg btn-general btn-white"
-                  >
-                    Try Now
-                  </Link>
+                  {/* <Link to="/login">Try Now</Link> */}
+                  <LoginModal text="Try Now" />
                 </div>
               </div>
             </div>

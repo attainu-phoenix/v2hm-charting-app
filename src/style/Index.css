@@ -43,6 +43,7 @@ h3 {
 .chartowl-top-nav {
   background: rgba(0, 0, 0, 0);
   position: absolute;
+  width: 100%;
 }
 
 .chartowl-top-nav .nav-link {
