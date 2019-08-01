@@ -184,12 +184,11 @@ class ChartDataComponent extends React.Component {
               <img src="/column-icon.svg" />
             </div>
           </div>
-          <div className="btn btn-dashboard">
-            <Link to="/app/dashboard">
-              <i class="fas fa-home mr-2" />
-              Back to Dashboard
-            </Link>
-          </div>
+
+          <Link to="/app/dashboard" className="btn btn-dashboard">
+            <i class="fas fa-home mr-2" />
+            Back to Dashboard
+          </Link>
         </div>
         <div className="col-md-8">
           <h4 className="text-center">
