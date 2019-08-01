@@ -86,7 +86,7 @@ class CSVFileUploaderComponent extends React.Component {
         </Link>
 
         <div className="note text-center mt-5">
-          <h4>Important Note:</h4>
+          <h4>Instructions</h4>
           <p>
             Please upload data in CSV File Format only.
             <br />
