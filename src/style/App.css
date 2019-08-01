@@ -109,7 +109,7 @@
 }
 
 .card-new .card-body {
-  background-color: #33a3ff;
+  background-color: #33a3ffa1;
   border-radius: 20px;
   box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.26);
 }
