@@ -126,9 +126,7 @@ class Landing extends React.Component {
                     <h3>Upload Data</h3>
                   </div>
                   <div className="service-item-desc">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
+                    <p>Upload data in CSV File with data to generate chart.</p>
                   </div>
                 </div>
               </div>
@@ -142,7 +140,7 @@ class Landing extends React.Component {
                   </div>
                   <div className="service-item-desc">
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Choose from Line, Bar, Pie and Column Charts to display.
                     </p>
                   </div>
                 </div>
@@ -157,7 +155,7 @@ class Landing extends React.Component {
                   </div>
                   <div className="service-item-desc">
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Store your charts in an Image, SVG or PDF file format.
                     </p>
                   </div>
                 </div>
@@ -181,17 +179,21 @@ class Landing extends React.Component {
                     </div>
                     <div className="about-desc">
                       <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Ex eaque aperiam ipsa voluptates harum illum veniam
-                        cumque in pariatur rerum, aut, quia beatae delectus odio
-                        consequuntur ab iusto nam earum!
+                        ChartOwl is a web application that allows a user to
+                        upload CSV file containing relevant chart data i.e.
+                        generate line, bar, pie and column chart from the
+                        uploaded data as per his choice. It allows user to save
+                        the generated charts as per their wish with help of
+                        parse platform against their unique Google Id.
                       </p>
                       <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Totam natus tenetur, obcaecati eveniet cumque dolorem
-                        sit voluptatibus provident nemo dolorum laboriosam
-                        pariatur. Repudiandae molestiae maiores non est commodi
-                        necessitatibus saepe!
+                        Users can download the generated chart as an image in
+                        svg, png, or jpg format or even as pdf and use where
+                        required This tool is for anyone who has numerical data
+                        stored in csv format, and wants to not only generate a
+                        chart but export it in various formats like jpg image,
+                        png image, pdf etc. without having to use multiple
+                        tools.
                       </p>
                     </div>
                     <div className="about-btn">
