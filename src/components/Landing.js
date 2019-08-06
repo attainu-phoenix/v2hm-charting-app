@@ -140,7 +140,8 @@ class Landing extends React.Component {
                   </div>
                   <div className="service-item-desc">
                     <p>
-                      Choose from Line, Bar, Pie and Column Charts to display.
+                      Choose from Line, Bar, Pie and Column Charts to display
+                      your data.
                     </p>
                   </div>
                 </div>

@@ -53,6 +53,7 @@ class CSVFileUploaderComponent extends React.Component {
         }
       });
     };
+
     reader.readAsText(file);
   };
 
