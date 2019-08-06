@@ -7,6 +7,21 @@ import {
 import { store } from "../store.js";
 
 function chartReducer(chart = {}, action) {
+  let highChartOptions = {
+    chart: {
+      type: "line"
+    },
+    title: {
+      text: ""
+    },
+    series: [
+      {
+        colorByPoint: true,
+        data: []
+      }
+    ]
+  };
+
   if (action.type === "CREATE_CHART") {
     createChart(store, action);
   }
@@ -20,7 +35,11 @@ function chartReducer(chart = {}, action) {
   }
 
   if (action.type === "ONE_CHART_LOADED") {
-    return action.oneChartData;
+    let chart = action.oneChartData;
+    chart.chartDataObject = highChartOptions;
+    chart.chartDataObject.series[0].data = chart.chartData;
+    chart.chartDataObject.chart.type = chart.chartType;
+    return chart;
   }
 
   if (action.type === "EDIT_CHART") {
@@ -28,7 +47,11 @@ function chartReducer(chart = {}, action) {
   }
 
   if (action.type === "CHART_EDITED") {
-    return action.editedChartData;
+    let chart = action.editedChartData;
+    chart.chartDataObject = highChartOptions;
+    chart.chartDataObject.series[0].data = chart.chartData;
+    chart.chartDataObject.chart.type = chart.chartType;
+    return chart;
   }
 
   if (action.type === "REMOVE_CHART") {

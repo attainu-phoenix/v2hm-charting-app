@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { stateMapper } from "../store/store";
+import { getUserAccess } from "../store/api/index";
 
 class DashboardComponent extends React.Component {
   constructor(props) {
@@ -10,67 +11,56 @@ class DashboardComponent extends React.Component {
   }
 
   componentDidMount() {
+    let user = getUserAccess();
     this.props.dispatch({
       type: "FETCH_CHARTS",
-      userId: "33sEqWyntO"
+      userId: user.userId
     });
   }
-
-  // deleteChartHandle() {
-  //   this.props.dispatch({
-  //     type: "REMOVE_CHART",
-  //     removechart: {
-  //       chartId: this.props.charts.results.objectId
-  //     }
-  //   });
-  // }
 
   render() {
     console.log("props in dashboard", this.props.charts);
 
     return (
-      <div className="container">
-        <div>CREATE NEW CHART</div>
-        <br />
-        <Link to="/app/data-type">
-          <div
-            className="card bg-info text-white"
-            style={{ width: 180, height: 140 }}
-          >
-            <div className="card-body">
-              <h1 className="display-1">+</h1>
-            </div>
-          </div>
-        </Link>
-        <br />
+      <div>
+        <div className="app-heading">
+          <i class="fas fa-chart-pie" />
+          <h5>New Chart</h5>
+        </div>
 
-        <div>SAVED CHARTS</div>
+        <div className="card card-new">
+          <Link to="/app/upload-csv">
+            <div className="card-body">
+              <div className="row">
+                <div className="col-sm">
+                  <div className="new-card-text">
+                    <span>Upload</span>
+                    <p>CSV File for Charts</p>
+                  </div>
+
+                  <i class="fas fa-cloud-upload-alt" />
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+
+        <div className="app-heading">
+          <i class="fas fa-history" />
+          <h5>Saved Charts</h5>
+        </div>
         <div className="row">
           {this.props.charts &&
             this.props.charts.map(c => {
               return (
-                <div
-                  className="card bg-secondary mt-3 mb-2 mx-2"
-                  style={{
-                    width: 180,
-                    height: 180
-                  }}
-                  key={c.objectId}
-                >
-                  {/* <button
-                    chartId={c.objectId}
-                    className="btn btn-danger btn-small"
-                    onClick={this.deleteChartHandle}
-                  >
-                    delete
-                  </button> */}
+                <div key={c.objectId} className="card card-old">
                   <Link to={`/app/chart/${c.objectId}`}>
                     <div className="card-body text-white">
-                      <small>
-                        {c.name} Chart type - {c.chartType}
-                      </small>
+                      <div className="card-chart-name">{c.name}</div>
 
-                      <small>{c.updatedAt}</small>
+                      <div className="card-chart-type">
+                        {c.chartType.toUpperCase() + " CHART"}
+                      </div>
                     </div>
                   </Link>
                 </div>

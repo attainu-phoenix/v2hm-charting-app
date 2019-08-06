@@ -3,277 +3,294 @@ import { GoogleLogin } from "react-google-login";
 
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Login from "./Login";
+import LoginModal from "./Modal";
+import "../style/Index.css";
 
 class Landing extends React.Component {
   constructor(props) {
     super(props);
-
-    this.googleCallback = this.googleCallback.bind(this);
   }
 
-  googleCallback(response) {
-    if (!response || !response.accessToken) {
-      alert("Google signin failed. Please try again");
-      return;
-    }
-    let user = {
-      token: response.accessToken,
-      name: response.profileObj.name
-    };
-    localStorage.setItem("user", JSON.stringify(user));
-
-    window.location.href = "/app";
-  }
   render() {
     return (
-      <div>
-        <div className="container-fluid top">
-          <div className="row">
-            <div className="col-md-2">
-              <img className="logo-landing" src="logo.png" />
+      <div className="landing">
+        {/* <nav
+          className="navbar navbar-inverse navbar-fixed-top"
+          role="navigation"
+        >
+          <div className="container-fluid">
+            <div className="chartowl-nav-wrapper">
+              <div className="navbar-header">
+                <a href="#" className="navbar-brand">
+                  <img className="logo-landing" src="logo.png" />
+                </a>
+              </div>
+              <div className="chartowl-menu">
+                <ul className="nav navbar-nav">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">How It Works</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Our Team</a></li>
+                  <li><a href="#">Login</a></li>
+                </ul>
+              </div>
             </div>
-            <div className="col-md-10">
-              <nav className="nav flex-row nav-landing">
-                <Link to="/login" className="nav-link text-light pb-4">
+          </div>
+        </nav> */}
+
+        <nav className="navbar navbar-expand-lg chartowl-top-nav">
+          <a className="navbar-brand" href="#">
+            <img className="logo-landing" src="logo-white.png" />
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="owlchart-menu"
+            aria-controls="owlchart-menu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
+
+          <div className="collapse navbar-collapse" id="owlchart-menu">
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <a className="nav-link" href="#">
+                  Home
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">
+                  How It Works
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">
+                  About
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">
+                  Our Team
+                </a>
+              </li>
+              <li className="nav-item">
+                {/* <Link to="/login" className="nav-link text-dark pb-4">
                   Login
-                </Link>
-                &emsp; &emsp; &emsp;
-                <Link to="/login" className="nav-link text-light pb-4">
-                  Features
-                </Link>
-                &emsp; &emsp; &emsp;
-                <Link to="/login" className="nav-link text-light pb-4">
-                  Support
-                </Link>
-                &emsp; &emsp; &emsp;
-                <Link to="/login" className="nav-link text-light pb-4">
-                  About us
-                </Link>
-                &emsp; &emsp; &emsp;
-                <Link to="/login" className="nav-link text-light pb-4">
-                  Contact Us
-                </Link>
-                &emsp; &emsp; &emsp;
-                <Link to="/login" className="nav-link text-light pb-4">
-                  FAQs
-                </Link>
-              </nav>
+                </Link> */}
+                <LoginModal text="Login" />
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <section className="home">
+          <div className="home-cover">
+            <div className="home-content-box">
+              <div className="home-content-box-inner">
+                <div className="home-heading">
+                  <h3>
+                    Data Visualization that people love <br />{" "}
+                    <span>
+                      Tell your stories and present your data with charts.
+                    </span>
+                  </h3>
+                </div>
+                <div className="home-btn">
+                  {/* <Link to="/login">Try Now</Link> */}
+                  <LoginModal text="Try Now" />
+                </div>
+              </div>
             </div>
           </div>
-          <div className="row">&nbsp;</div>
-          <div className="row">&nbsp;</div>
-          <div className="row">&nbsp;</div>
-          <div className="row">&nbsp;</div>
-          <div className="row">&nbsp;</div>
-          <div className="row">&nbsp;</div>
-          <div className="row">&nbsp;</div>
-          <div className="row">&nbsp;</div>
-          <div className="row">
-            <div className="col-md-5 offset-md-5">
-              <h2 className="chart"> Chart App</h2>
+        </section>
+        <br />
+        <br />
+        <br />
+        <section className="services">
+          <div className="content-title">
+            <h3>How It Works</h3>
+            <div className="content-title-underline" />
+          </div>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-4">
+                <div className="service-item">
+                  <div className="service-item-icon">
+                    <i className="fas fa-cloud-upload-alt" />
+                  </div>
+                  <div className="service-item-title">
+                    <h3>Upload Data</h3>
+                  </div>
+                  <div className="service-item-desc">
+                    <p>Upload data in CSV File with data to generate chart.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <div className="service-item">
+                  <div className="service-item-icon">
+                    <i className="fas fa-chart-pie" />
+                  </div>
+                  <div className="service-item-title">
+                    <h3>Choose Chart</h3>
+                  </div>
+                  <div className="service-item-desc">
+                    <p>
+                      Choose from Line, Bar, Pie and Column Charts to display
+                      your data.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <div className="service-item">
+                  <div className="service-item-icon">
+                    <i className="fas fa-cloud-download-alt" />
+                  </div>
+                  <div className="service-item-title">
+                    <h3>Download Charts</h3>
+                  </div>
+                  <div className="service-item-desc">
+                    <p>
+                      Store your charts in an Image, SVG or PDF file format.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-md-7 offset-md-3">
-              <p>
-                <span className="HomeText">
-                  CharOwl is an app where you can create your own chart data,
-                  this will alos allow you to see some universal data flow,
-                  there are many types of chart available here you can try it
-                  out. You need to sign in first to use our app. please do sign
-                  in here.. some more text
-                  here........................................
-                </span>
-              </p>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-7 offset-md-4">
-              <button
-                type="button"
-                class="btn btn-success btn-lg"
-                data-toggle="modal"
-                data-target="#myModal"
-              >
-                Try it Once
-              </button>
-              <div id="myModal" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h3>Login Here</h3>
+        </section>
+        <br />
+        <br />
+        <br />
+        <section className="about">
+          <div className="about-bg-diagonal" />
+          <div className="container">
+            <div className="row">
+              <div className="col-md">
+                <div className="about-content-box">
+                  <div className="about-content-box-inner">
+                    <div className="content-title">
+                      <h3>About ChartOwl</h3>
+                      <div className="content-title-underline" />
                     </div>
-                    <div class="modal-body">
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <GoogleLogin
-                        clientId="253598194229-90kkf0t65d0s0udro8msfpiomls3cpsi.apps.googleusercontent.com"
-                        onSuccess={this.googleCallback}
-                        onFailure={this.googleCallback}
-                        buttonText="Continue with Google"
-                      />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <h6>Don't have google Account ? </h6>
-                      <a
-                        target="blank"
-                        href="https://accounts.google.com/signup/v2/webcreateaccount?continue=https%3A%2F%2Faccounts.google.com%2FManageAccount&gmb=exp&biz=false&flowName=GlifWebSignIn&flowEntry=SignUp"
-                      >
-                        <h6>Create A Google Account</h6>
+                    <div className="about-desc">
+                      <p>
+                        ChartOwl is a web application that allows a user to
+                        upload CSV file containing relevant chart data i.e.
+                        generate line, bar, pie and column chart from the
+                        uploaded data as per his choice. It allows user to save
+                        the generated charts as per their wish with help of
+                        parse platform against their unique Google Id.
+                      </p>
+                      <p>
+                        Users can download the generated chart as an image in
+                        svg, png, or jpg format or even as pdf and use where
+                        required This tool is for anyone who has numerical data
+                        stored in csv format, and wants to not only generate a
+                        chart but export it in various formats like jpg image,
+                        png image, pdf etc. without having to use multiple
+                        tools.
+                      </p>
+                    </div>
+                    <div className="about-btn">
+                      <a href="#" className="btn btn-lg btn-general btn-blue">
+                        Try Now
                       </a>
-                    </div>
-                    <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-default"
-                        data-dismiss="modal"
-                      >
-                        Close
-                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-              &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-              <button className="btn btn-primary btn-lg">Demo Chart</button>
             </div>
           </div>
-        </div>
+        </section>
+        <section className="team py-5 my-5">
+          <div className="content-title">
+            <h3>Our Team</h3>
+            <div className="content-title-underline" />
+          </div>
 
-        <div className="container-fluid ">
-          <div className="row">
-            <div className="col-md-6 left1 ">
-              <img src="charts.png" />
-            </div>
-            <div className="col-md-6 offset-md-0 right1">
-              <h3>
-                Suno Gaur se Duniya walo buri nazar na humpe daalo. Sabse aage
-                Honge V2HM!
-              </h3>
-              &nbsp;
-              <button className="btn btn-info">Search More</button>
-            </div>
-          </div>
-        </div>
-        <div className="container imgchart ">
-          <div className="row">
-            <div className="col-md-5">
-              <img src="https://apexcharts.com/wp-content/uploads/2018/01/line-chart-zoomable-timeseries.svg" />
-            </div>
-            <div className="col-md-5 offset-md-2">
-              &nbsp;
-              <img src="https://nces.ed.gov/nceskids/help/user_guide/graph/images/pie.jpg" />
-            </div>
-          </div>
-        </div>
-        <div className="container feature">
-          <div className="row">
-            <div className="col-md-3 feature1">
-              <p>
-                ChartApp Give you a great way to track on your live data
-                ...........................................................
-                ..........................................................
-                ...........................................................
-                .........................................................
-                ...........................................................
-                .........................................................
-                ..........................................................
-                .................................................
-              </p>
-              <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Feature 1</h3>
-            </div>
-            <div className="col-md-3 offset-md-1 feature2">
-              <p>
-                ChartApp Give you a great way to track on your live data
-                ............................................................
-                ..........................................................
-                ...........................................................
-                .........................................................
-                ...........................................................
-                .........................................................
-                ...........................................................
-                ...................................................
-              </p>
-              <h3> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Feature 2</h3>
-            </div>
-            <div className="col-md-3 offset-md-1 feature3">
-              <p>
-                ChartApp Give you a great way to track on your live data
-                ...........................................................
-                .........................................................
-                ...........................................................
-                .........................................................
-                ...........................................................
-                .........................................................
-                .........................................................
-                ........................................................
-              </p>
-              <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Feature 3</h3>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-3">
+                <div className="team-member-container">
+                  <div className="team-member-img">
+                    <img src="/sami.jpg" alt="" />
+                  </div>
+                  <div className="team-member-info">
+                    <h3>Mohd Sami</h3>
+                    <p>Web Developer</p>
+                    <div className="team-social">
+                      <i className="fab fa-github" />
+                      <i className="fab fa-linkedin" />
+                      <i className="fab fa-facebook" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-3">
+                <div className="team-member-container">
+                  <div className="team-member-img">
+                    <img src="/mohit.jpg" alt="" />
+                  </div>
+                  <div className="team-member-info">
+                    <h3>Deepak Shrivastava</h3>
+                    <p>Web Developer</p>
+                    <div className="team-social">
+                      <i className="fab fa-github" />
+                      <i className="fab fa-linkedin" />
+                      <i className="fab fa-facebook" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-3">
+                <div className="team-member-container">
+                  <div className="team-member-img">
+                    <img src="/monish.jpg" alt="" />
+                  </div>
+                  <div className="team-member-info">
+                    <h3>Monish Manwani</h3>
+                    <p>Web Developer</p>
+                    <div className="team-social">
+                      <i className="fab fa-github" />
+                      <i className="fab fa-linkedin" />
+                      <i className="fab fa-facebook" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-3">
+                <div className="team-member-container">
+                  <div className="team-member-img">
+                    <img src="/Deepak.jpg" alt="" />
+                  </div>
+                  <div className="team-member-info">
+                    <h3>Mohit Kumar</h3>
+                    <p>Web Developer</p>
+                    <div className="team-social">
+                      <i className="fab fa-github" />
+                      <i className="fab fa-linkedin" />
+                      <i className="fab fa-facebook" />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="container team">
-          <div className="row">
-            <div className="col-md-5">
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <h3>Meet Our Team</h3>
-              <p>
-                We the Team V2HM has developed this application, we are the four
-                people master in full stack development. We are working on the
-                latest technologies like JavaScript, ExpressJS, NodeJS, ReactJS,
-                Redux and MongoBD.
-              </p>
-            </div>
-            <div className="col-md-3 offset-md-1">
-              <h2>Mohit</h2>
-              <img src="Deepak.jpg" />
-            </div>
-            <div className="col-md-3">
-              <h2>Mohd. Sami</h2>
-              <img src="sami.jpg" />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-5">
-              <p>
-                Contact us for any kind of software building. We Promise to
-                provide best service to our customers, Share with your friends
-                too who need to build any website for his/her business. Thank
-                You !!!
-              </p>
-            </div>
-            <div className="col-md-3 offset-md-1">
-              <img src="monish.jpg" />
-              <h2>Monish</h2>
-            </div>
-            <div className="col-md-3">
-              <img src="mohit.jpg" />
-              <h2>Deepak Shrivastava</h2>
-            </div>
-          </div>
-        </div>
+        </section>
 
-        <div className="container-fluid footer">
+        <div className="container-fluid footer mb-5">
           <div className="row">
             <div className="col-md-2">
-              <h3>ChartOwl</h3>
+              <img className="logo-landing ml-5 mt-2" src="logo.png" />
               <br />
               <br />
               <br />
-              <p>@Charting Project</p>
             </div>
             <div className="col-md-2 offset-md-1">
               <p>About Us</p>
@@ -284,16 +301,17 @@ class Landing extends React.Component {
             </div>
             <div className="col-md-2 offset-md-1">
               <p>
-                <i className="fa fa-facebook-square" /> &nbsp;Facebook
+                <i className="fab fa-facebook mr-1" />
+                &nbsp;Facebook
               </p>
               <p />
               <p>
-                <i class="fa fa-twitter" />
+                <i className="fab fa-twitter mr-1" />
                 &nbsp;Twitter
               </p>
               <p />
               <p>
-                <i class="fa fa-instagram" />
+                <i className="fab fa-instagram mr-1" />
                 &nbsp;Instagram
               </p>
             </div>
@@ -305,7 +323,6 @@ class Landing extends React.Component {
                 className="form-control"
               />
               <br />
-              <button className="btn btn-info">Go </button>
             </div>
           </div>
         </div>

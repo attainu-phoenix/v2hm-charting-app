@@ -15,6 +15,7 @@ class DataTypeComponent extends React.Component {
       type: "CLEAR_CHART"
     });
   }
+
   createChartHandle() {
     let newChartId = Math.floor(Math.random() * 99999);
 
@@ -22,9 +23,9 @@ class DataTypeComponent extends React.Component {
       type: "CREATE_CHART",
       newChartData: {
         userId: "33sEqWyntO",
-        name: "New Chart " + newChartId,
-        chartType: "line",
-        chartData: [{ x: 10, y: 35 }, { x: 11, y: 25 }, { x: 12, y: 15 }]
+        name: "Untitled Chart " + newChartId,
+        chartType: "pie",
+        chartData: [{ name: "Ansal", y: 12 }, { name: "Vaibhav", y: 50 }]
       }
     });
   }
@@ -44,13 +45,13 @@ class DataTypeComponent extends React.Component {
         <br />
 
         {/* <Link to={`/app/chart/${this.props.charts.objectId}`}> */}
-        <div
+        {/* <div
           className="card bg-info text-white"
           style={{ width: 180, height: 140, float: "left" }}
           onClick={this.createChartHandle}
         >
           <div className="card-body">Input Data</div>
-        </div>
+        </div> */}
 
         <Link to="/app/upload-csv">
           <div
